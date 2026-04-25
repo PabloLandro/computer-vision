@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+set -e
 
-inp="in/P01_01.mp4"
-out="out/P01_01.mp4"
-dim=256
+inp="$1"
+out="$2"
+dim="${3:-256}"
 
 ffmpeg -i "$inp" \
   -vf "crop=min(iw\,ih):min(iw\,ih),scale=${dim}:${dim}" \

@@ -5,11 +5,12 @@ from torchcodec.decoders import VideoDecoder
 from transformers import AutoVideoProcessor, AutoModel
 from tqdm import tqdm
 
+import sys
+
 #hf_repo = "facebook/vjepa2-vitg-fpc64-384"
 hf_repo = "facebook/vjepa2-vitl-fpc64-256"
-video_id = "P01_01"
-video_path = f"../data/cooking/cropped/{video_id}.mp4"
-output_path = f"../embeddings/{video_id}.pkl"
+video_path = sys.argv[1]
+output_path = sys.argv[2]
 block_size = 64
 
 device = "mps" if torch.backends.mps.is_available() else "cpu"
