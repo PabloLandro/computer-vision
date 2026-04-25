@@ -7,9 +7,10 @@ from tqdm import tqdm
 
 #hf_repo = "facebook/vjepa2-vitg-fpc64-384"
 hf_repo = "facebook/vjepa2-vitl-fpc64-256"
-video_path = "../data/cooking/cropped/P01_01.mp4"
+video_id = "P01_01"
+video_path = f"../data/cooking/cropped/{video_id}.mp4"
+output_path = f"../embeddings/{video_id}.pkl"
 block_size = 64
-output_path = "embeddings.pkl"
 
 device = "mps" if torch.backends.mps.is_available() else "cpu"
 
