@@ -17,7 +17,7 @@ from relevance_classifier import (
 def test() -> None:
     embeddings_dir = Path("../embeddings/test")
     csv_path = Path("../data/cooking/EPIC_descriptions.csv")
-    checkpoint_path = Path("video-classifier/relevance_classifier.pt")
+    checkpoint_path = Path("checkpoint/relevance_classifier.pt")
 
     batch_size = 128
 
@@ -34,8 +34,8 @@ def test() -> None:
     model.load_state_dict(checkpoint["model_state_dict"])
     model.eval()
 
-    mean = checkpoint["mean"]
-    std = checkpoint["std"]
+    mean = checkpoint["mean"].cpu()
+    std = checkpoint["std"].cpu()
     threshold = checkpoint["threshold"]
 
     labels_by_video = load_relevance_labels(csv_path)

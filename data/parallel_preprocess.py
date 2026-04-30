@@ -46,7 +46,7 @@ def download_worker(jobs, downloaded):
 
             print(f"=== Downloading {split_name}/{video_id} ===", flush=True)
             subprocess.run(
-                ["wget", "--quiet", "-O", str(full_video), url],
+                ["wget", "-O", str(full_video), url],
                 stdin=subprocess.DEVNULL,
                 check=True,
             )
@@ -73,6 +73,7 @@ def processing_worker(downloaded):
             stdin=subprocess.DEVNULL,
             check=True,
         )
+        print(f"Cropped {split_name}/{video_id}", flush=True)
 
         print("Embedding...", flush=True)
         subprocess.run(
@@ -95,8 +96,8 @@ def main():
         directory.mkdir(parents=True, exist_ok=True)
 
     jobs = [
-        # (TRAIN_IDS_FILE, TRAIN_URL, TRAIN_EMBEDDINGS_DIR, "train"),
-        (TEST_IDS_FILE, TEST_URL, TEST_EMBEDDINGS_DIR, "test"),
+        (TRAIN_IDS_FILE, TRAIN_URL, TRAIN_EMBEDDINGS_DIR, "train"),
+        #(TEST_IDS_FILE, TEST_URL, TEST_EMBEDDINGS_DIR, "test"),
     ]
 
     downloaded = Queue(maxsize=5)
