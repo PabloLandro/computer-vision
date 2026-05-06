@@ -1,0 +1,126 @@
+verb_id,class_key,verbs,relevant
+0,take,"['take', 'grab', 'pick', 'draw', 'get', 'grab-up', 'collect-from', 'take-up', 'grab-down', 'pull-down', 'fetch', 'pick-up']",True
+1,put,"['put', 'pose', 'put-away', 'place-that', 'place-down', 'put', 'set-down', 'put-over', 'place-on', 'reture', 'put-on', 'place-away', 'swap', 'layer', 'position', 'put-down', 'put-back', 'place-back', 'return', 'pace', 'dose', 'put-up', 'leave', 'place', 'put-aside', 'lay', 'reposition', 'replace', 'put-onto']",True
+2,open,"['open', 'unzip', 'open-up']",True
+3,close,"['close', 'close-off', 'shut']",False
+4,wash,"['wash', 'sponge', 'lather', 'wash-with', 'rinse', 'rinse-off', 'soap-up', 'wash-off', 'soap', 'rise', 'wash-up', 'clean-around', 'clean-off', 'clean-with', 'clean', 'clean-up', 'wipe-down', 'wipe-of', 'wipe', 'wipe-off']",True
+5,cut,"['cut', 'chop', 'chop-off', 'cut-off', 'slice-into', 'slice-along', 'slice-off', 'stem', 'slice-up', 'cut-into', 'dice', 'half', 'halve', 'chop-up', 'snip', 'trim', 'slice']",True
+6,mix,"['mix', 'beat', 'mix-around', 'stir-with', 'whisk', 'stir', 'blend', 'mix-in', 'stir-in']",True
+7,pour,"['pour', 'pour-in', 'tip-in', 'pour-out', 'pour-on', 'pour-into', 'sieve']",True
+8,throw,"['throw', 'throw-out', 'recycle', 'dispose-of', 'throw-over', 'throw-away', 'throw-in', 'bin', 'trow', 'toss']",False
+9,move,"['move', 'transfer', 'move-around']",False
+10,remove,"['remove', 'extract', 'take-off', 'remove-out', 'take-out', 'get-out', 'remove-inside', 'remove-from', 'pick-out']",True
+11,dry,"['dry', 'dry-off', 'towel']",True
+12,turn-on,"['turn-on', 'start', 'begin', 'ignite', 'switch-on', 'activate', 'water-on', 'play', 'start-to', 'restart', 'light']",True
+13,turn,"['turn', 'rotate']",True
+14,shake,"['shake', 'shake-off', 'shake-out']",True
+15,turn-off,"['turn-off', 'switch-of', 'water-off', 'switch-off', 'switch-out', 'shut-off', 'turn-of']",True
+16,peel,"['peel', 'skin-from', 'skin', 'peel-off', 'peel-back']",True
+17,adjust,"['adjust', 'change', 'regulate']",False
+18,empty,['empty'],True
+19,scoop,"['scoop', 'spoon-in', 'spoon', 'scoop-out', 'scoop-up']",True
+20,check,"['check', 'ensure', 'test', 'look-in', 'watch', 'inspect', 'check-on']",True
+21,squeeze,"['squeeze', 'squidge', 'squidge-into', 'squash', 'squish-into', 'wring-out', 'wring', 'squish', 'squeeze-into']",True
+22,insert,"['insert', 'put-in', 'put-into', 'fit', 'place-in', 'put-inside']",True
+23,press,"['press', 'push-down', 'collapse', 'compress', 'push', 'press-on']",True
+24,fill,"['fill', 'fill-with', 'fill-up', 'stuff']",True
+25,add,"['add', 'combine', 'add-to']",True
+26,scrape,"['scrape', 'scrape-out', 'loose', 'scour', 'scrap', 'scrape-off']",True
+27,sharpen,"['sharpen', 'thin']",False
+28,wrap,"['wrap', 'top', 'lid', 'cover', 'seal', 'clamp', 'fasten', 'reseal', 'clip', 'wrap-up', 'tie']",True
+29,roll,"['roll', 'roll-up']",True
+30,sprinkle,"['sprinkle', 'sprinkle-on', 'drizzle', 'scatter', 'sprincle', 'crumble']",True
+31,break,"['break', 'snap', 'crack', 'break-up']",True
+32,flip,"['flip', 'overturn', 'turn-over']",True
+33,hang,"['hang', 'drape', 'hang-up']",False
+34,hold,['hold'],False
+35,sort,"['sort', 'rearrange', 'arrange', 'clear', 'tidy', 'line-up']",False
+36,apply,"['apply', 'spread']",True
+37,crush,"['crush', 'hit', 'grind', 'grate', 'mash', 'crush']",True
+38,search,"['search', 'search-for', 'search-in', 'look-for', 'find', 'locate']",False
+39,sample,"['sample', 'taste', 'smell', 'lick']",True
+40,knead,['knead'],True
+41,set,"['set', 'set-up', 'set-out']",True
+42,walk,"['walk', 'enter', 'enter-into', 'walk-into', 'walk-around', 'walk-to', 'walk-with']",False
+43,divide,"['divide', 'split', 'detach', 'separate', 'distribute']",True
+44,spray,"['spray', 'spay']",True
+45,use,"['use', 'used-to', 'used']",False
+46,fold,['fold'],True
+47,cook,"['cook', 'toast', 'fry-in', 'heat', 'fry', 'reduce', 'boil']",True
+48,filter,"['filter', 'strain', 'drain', 'dump-out']",True
+49,scrub,"['scrub', 'scrub-inside']",True
+50,look,"['look', 'stare-at', 'see', 'read-on', 'read', 'look-at']",False
+51,finish,"['finish', 'stop', 'end', 'do']",False
+52,soak,"['soak', 'submerge', 'immerse']",True
+53,brush,['brush'],True
+54,pull,"['pull', 'pull-out']",False
+55,pat,"['pat', 'pat-into', 'dab', 'tap', 'tap-on', 'poke', 'pat-down']",True
+56,form,"['form', 'shape', 'forge', 'make', 'shape-into']",True
+57,measure,['measure'],True
+58,drink,"['drink', 'drink-from']",False
+59,choose,"['choose', 'select']",False
+60,serve,"['serve', 'plate-on', 'plate', 'dish', 'plate-up']",True
+61,drop,"['drop', 'drop-on']",True
+62,wear,['wear'],False
+63,rip,"['rip', 'tear', 'tear-off', 'tear-down']",False
+64,tip,"['tip', 'tip-over', 'tip-out']",True
+65,turn-down,['turn-down'],True
+66,gather,"['gather', 'collect']",False
+67,eat,"['eat', 'chew-on', 'bite']",False
+68,stack,"['stack', 'stack-up']",False
+69,store,['store'],False
+70,switch,['switch'],False
+71,increase,"['increase', 'switch-up', 'turn-up']",True
+72,carry,"['carry', 'have', 'bring']",False
+73,lift,"['lift', 'raise', 'tilt', 'lift-up']",False
+74,twist,"['twist', 'screw', 'screw-in', 'screw-on', 'tighten']",False
+75,sweep,['sweep'],False
+76,rub,"['rub', 'rub-off']",True
+77,unwrap,"['unwrap', 'unpack', 'unseal']",True
+78,stab,['stab'],False
+79,attach,"['attach', 'connect', 'plug', 'assemble', 'plug-into', 'plug-in']",False
+80,stretch,"['stretch', 'unfold']",True
+81,lower,['lower'],True
+82,prepare,['prepare'],True
+83,unscrew,"['unscrew', 'untwist']",False
+84,season,"['season', 'sweeten', 'pepper', 'salt']",True
+85,video,['video'],False
+86,tap-off,['tap-off'],False
+87,set-off,['set-off'],False
+88,squirt,['squirt'],True
+89,load,['load'],False
+90,unroll,"['unroll', 'roll-out']",True
+91,water,"['water', 'wet']",True
+92,do,['do'],False
+93,flatten,"['flatten', 'flatten-with']",True
+94,uncover,"['uncover', 'lid-off']",True
+95,slide,"['slide', 'slide-out']",False
+96,unplug,['unplug'],False
+97,level,['level'],True
+98,tear-out,['tear-out'],False
+99,feel,"['feel', 'touch']",False
+100,fix,['fix'],False
+101,spill,['spill'],False
+102,pack,['pack'],True
+103,bake,['bake'],True
+104,blow,"['blow', 'blow-out']",False
+105,sit-on,['sit-on'],False
+106,count,['count'],False
+107,dip,['dip'],True
+108,cool,['cool'],True
+109,flush,['flush'],False
+110,knife,['knife'],False
+111,fork,['fork'],False
+112,swirl,['swirl'],True
+113,stick,['stick'],False
+114,pet-down,['pet-down'],False
+115,realize,['realize'],False
+116,weigh,['weigh'],True
+117,defoliate,['defoliate'],True
+118,deseed,['deseed'],True
+119,tessellate,['tessellate'],False
+120,unfreeze,['unfreeze'],True
+121,decide-if,['decide-if'],False
+122,let-out,['let-out'],False
+123,save,['save'],False
+124,reverse,['reverse'],False

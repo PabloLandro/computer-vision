@@ -1,3 +1,4 @@
 .env
 .venv/
 *.mp4
+video-classifier/wandb
