@@ -18,7 +18,7 @@ except ImportError:
     wandb = None
 
 BLOCK_SIZE = 64
-ANNOTATIONS_PATH = "../data/annotations.csv"
+ANNOTATIONS_PATH = "../data/annotations_train.csv"
 EMBEDDINGS_DIR = Path("../embeddings/train")
 WANDB_PROJECT = "action-classifier"
 USE_WANDB = wandb is not None

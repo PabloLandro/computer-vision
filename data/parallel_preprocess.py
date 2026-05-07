@@ -97,7 +97,7 @@ def main():
 
     jobs = [
         (TRAIN_IDS_FILE, TRAIN_URL, TRAIN_EMBEDDINGS_DIR, "train"),
-        #(TEST_IDS_FILE, TEST_URL, TEST_EMBEDDINGS_DIR, "test"),
+        (TEST_IDS_FILE, TEST_URL, TEST_EMBEDDINGS_DIR, "test"),
     ]
 
     downloaded = Queue(maxsize=5)

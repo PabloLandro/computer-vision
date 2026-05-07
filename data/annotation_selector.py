@@ -1,7 +1,10 @@
 import ast
 import pandas as pd
 
-df = pd.read_csv("EPIC_100_train.csv")
+train_df = pd.read_csv("raw_annotations/EPIC_100_train.csv")
+val_df = pd.read_csv("raw_annotations/EPIC_100_validation.csv")
+
+df = pd.concat([train_df, val_df], ignore_index=True)
 cols = ["video_id", "start_frame", "stop_frame", "verb", "verb_class", "noun", "all_nouns", "all_noun_classes", "relevant"]
 
 # Get an array indexed by noun/verb id. Mapping to relevance
@@ -25,4 +28,4 @@ df["relevant"] = df.apply(is_relevant, axis=1)
 # result = df[df["video_id"] == "P01_01"][cols]
 result = df[cols]
 result.to_csv("annotations.csv", index=False)
-print(f"Saved {len(result)} rows to annotations.csv")
+print(f"Saved {len(result)} rows to annotations_1.csv")
