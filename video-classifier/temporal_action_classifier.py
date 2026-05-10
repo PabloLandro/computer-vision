@@ -16,7 +16,7 @@ from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 
 
-ANNOTATIONS_CSV = "../data/annotations.csv"
+ANNOTATIONS_CSV = "../data/annotations_train_test.csv"
 EMBEDDINGS_DIR = "../embeddings"
 EMBEDDINGS_SUBDIRS = ("train", "test")
 OUTPUT_DIR = "runs/temporal_vjepa2"

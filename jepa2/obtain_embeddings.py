@@ -22,8 +22,6 @@ model.eval()
 vr = VideoDecoder(video_path)
 total_frames = len(vr)
 
-total_frames = int(total_frames * 0.1)
-
 num_blocks = -(-total_frames // block_size)
 print(f"Total frames: {total_frames}, blocks: {num_blocks}")
 
