@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import ast
 import csv
 import json
@@ -17,12 +15,16 @@ from sklearn.metrics import accuracy_score, f1_score, precision_recall_fscore_su
 from tqdm import tqdm
 
 
-ANNOTATIONS_CSV = Path("data/annotations/annotations_train_test.csv")
-EMBEDDINGS_DIR = Path("data/embeddings")
-VERB_CLASSES_CSV = Path("data/classes/EPIC_verb_classes.csv")
-NOUN_CLASSES_CSV = Path("data/classes/EPIC_noun_classes.csv")
+SCRIPT_DIR = Path(__file__).resolve().parent
+VIDEO_CLASSIFIER_DIR = SCRIPT_DIR.parent
+REPO_ROOT = VIDEO_CLASSIFIER_DIR.parent
 
-OUTPUT_DIR = Path("outputs")
+ANNOTATIONS_CSV = REPO_ROOT / "data" / "annotations" / "annotations_train_test.csv"
+EMBEDDINGS_DIR = REPO_ROOT / "embeddings"
+VERB_CLASSES_CSV = REPO_ROOT / "data" / "classes" / "EPIC_verb_classes.csv"
+NOUN_CLASSES_CSV = REPO_ROOT / "data" / "classes" / "EPIC_noun_classes.csv"
+
+OUTPUT_DIR = SCRIPT_DIR / "outputs"
 MODELS_DIR = OUTPUT_DIR / "models"
 REPORTS_DIR = OUTPUT_DIR / "reports"
 PREDICTIONS_DIR = OUTPUT_DIR / "predictions"

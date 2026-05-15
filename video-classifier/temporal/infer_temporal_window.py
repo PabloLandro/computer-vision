@@ -11,6 +11,8 @@ from classifier_data import (
     ANNOTATIONS_CSV,
     BACKGROUND_ID,
     DEFAULT_BLOCK_SIZE,
+    EMBEDDINGS_DIR,
+    MODELS_DIR,
     NOUN_CLASSES_CSV,
     PREDICTIONS_DIR,
     VERB_CLASSES_CSV,
@@ -35,9 +37,9 @@ USE_ENSEMBLE = True
 ENSEMBLE_SEEDS = [42, 123, 999]
 SINGLE_MODEL_SEED = ENSEMBLE_SEEDS[-1]
 
-MODEL_ROOT = Path("outputs/models/temporal_window_ensemble")
+MODEL_ROOT = MODELS_DIR / "temporal_window_ensemble"
 
-EMBEDDING_PATH = Path("data/unseen/P05_06.pkl")
+EMBEDDING_PATH = EMBEDDINGS_DIR / "P05_06.pkl"
 ANNOTATIONS_PATH = ANNOTATIONS_CSV
 PREDICTION_DIR = PREDICTIONS_DIR / "temporal_window_inference"
 PREDICTION_FILENAME_PREFIX = "block_predictions"
