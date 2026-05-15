@@ -14,8 +14,8 @@ output_path = sys.argv[2]
 block_size = 64
 
 device = "mps" if torch.backends.mps.is_available() else "cpu"
-
-model = AutoModel.from_pretrained(hf_repo, torch_dtype=torch.float16).to(device)
+print("Running on device:", device)
+model = AutoModel.from_pretrained(hf_repo, dtype=torch.float16).to(device)
 processor = AutoVideoProcessor.from_pretrained(hf_repo)
 model.eval()
 

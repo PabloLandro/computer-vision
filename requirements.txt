@@ -4,3 +4,4 @@ torchcodec
 transformers
 pillow
 torchvision
+wandb

@@ -18,8 +18,13 @@ except ImportError:
     wandb = None
 
 BLOCK_SIZE = 64
-ANNOTATIONS_PATH = "../data/annotations_train.csv"
-EMBEDDINGS_DIR = Path("../embeddings/train")
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+
+ANNOTATIONS_PATH = REPO_ROOT / "data" / "annotations" / "annotations_train.csv"
+EMBEDDINGS_DIR = REPO_ROOT / "embeddings"
+CHECKPOINT_DIR = SCRIPT_DIR / "checkpoint"
+CSV_RECORDS_DIR = SCRIPT_DIR / "csv_records"
 WANDB_PROJECT = "action-classifier"
 USE_WANDB = wandb is not None
 
@@ -392,8 +397,11 @@ def run_task(task_name, X, y, num_classes, input_dim, device):
         ascending=[False, True],
     )
 
-    results_path = f"{task_name}_sweep_results.csv"
-    model_path = f"checkpoint/best_{task_name}_classifier.pt"
+    CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
+    CSV_RECORDS_DIR.mkdir(parents=True, exist_ok=True)
+
+    results_path = CSV_RECORDS_DIR / f"{task_name}_sweep_results.csv"
+    model_path = CHECKPOINT_DIR / f"best_{task_name}_classifier.pt"
 
     results_df.to_csv(results_path, index=False)
     torch.save(best["model"].state_dict(), model_path)
