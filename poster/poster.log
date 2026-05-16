@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.27)  16 MAY 2026 02:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.27)  16 MAY 2026 15:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1159,9 +1159,9 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./poster.nav)
-LaTeX Font Info:    Calculating math sizes for size <34.83> on input line 211.
+LaTeX Font Info:    Calculating math sizes for size <34.83> on input line 209.
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 211.
+ut line 209.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1170,15 +1170,15 @@ thkerncmss.
 <figures/pipeline2.pdf, id=94, 946.23514pt x 245.21613pt>
 File: figures/pipeline2.pdf Graphic file (type pdf)
 <use figures/pipeline2.pdf>
-Package pdftex.def Info: figures/pipeline2.pdf  used on input line 211.
+Package pdftex.def Info: figures/pipeline2.pdf  used on input line 209.
 (pdftex.def)             Requested size: 1759.19135pt x 455.94388pt.
 <figures/kitchen.png, id=131, 1284.8pt x 722.7pt>
 File: figures/kitchen.png Graphic file (type png)
 <use figures/kitchen.png>
-Package pdftex.def Info: figures/kitchen.png  used on input line 211.
+Package pdftex.def Info: figures/kitchen.png  used on input line 209.
 (pdftex.def)             Requested size: 1759.19135pt x 989.57474pt.
 
-Overfull \vbox (117.70282pt too high) detected at line 211
+Overfull \vbox (47.7697pt too high) detected at line 209
  []
 
 
@@ -1204,20 +1204,20 @@ Package rerunfilecheck Info: File `poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26866 strings out of 473190
- 534104 string characters out of 5715800
- 1001503 words of memory out of 5000000
- 49576 multiletter control sequences out of 15000+600000
+ 26855 strings out of 473190
+ 533738 string characters out of 5715800
+ 999414 words of memory out of 5000000
+ 49565 multiletter control sequences out of 15000+600000
  567589 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,123p,381b,967s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,14n,123p,381b,967s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pf
 b></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
 pfb>
-Output written on poster.pdf (1 page, 1988277 bytes).
+Output written on poster.pdf (1 page, 1988284 bytes).
 PDF statistics:
  293 PDF objects out of 1000 (max. 8388607)
  167 compressed objects within 2 object streams

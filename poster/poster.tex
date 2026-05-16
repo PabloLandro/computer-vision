@@ -119,9 +119,10 @@
   \begin{block}{Why V-JEPA2-small?}
     We use the \textbf{small} variant of V-JEPA2 (ViT-L backbone,
     $\approx$307M parameters). Its compact footprint means the full
-    pipeline — embedding extraction included — runs on a
-    \textbf{MacBook Pro} or any consumer laptop with sufficient GPU
-    RAM, with no need for a data-center GPU.
+    pipeline can run on a \textbf{MacBook Pro} or any consumer laptop
+    with sufficient GPU RAM — though embedding extraction remains slow
+    on local hardware. For this project we used \textbf{cloud compute}
+    to embed the full dataset in reasonable time.
   \end{block}
 
 \end{column}
@@ -135,18 +136,15 @@
   \end{block}
 
   \begin{block}{Classification Heads}
-    \textbf{Relevance Classifier} — binary MLP on each block embedding:
-    \[
-      1024 \xrightarrow{\text{Linear}} 256 \xrightarrow{\text{LN,GELU,DO}}
-      128 \xrightarrow{\text{Linear}} 1
-    \]
+    \textbf{Relevance Classifier} — TBD
 
     \vskip0.3em
     \textbf{Action Classifier} — temporal Transformer over a 7-block window
     (radius 3). Embeddings are projected $1024 \to 768$ with learned positional
     encodings, then processed by a 2-layer, 8-head TransformerEncoder.
-    The center token is fed to three linear heads (verb, noun, action pair).
-    A 3-seed ensemble averages action logits at inference.
+    The center token is fed to a single linear head predicting the
+    \textbf{action} (a noun--verb pair).
+    A 3-seed ensemble averages logits at inference.
 
   \end{block}
 
@@ -184,7 +182,7 @@
   \begin{block}{LLM Post-Processing}
     The action classifier outputs a \textbf{sequence of (verb, noun) pairs}
     aligned to video blocks.
-    We pass this sequence to a \textbf{large language model} which
+    We pass this sequence to \textbf{Llama 3.2} which
     synthesizes the raw event list into a fluent, human-readable recipe:
     coherent steps, resolved repetitions, and natural prose.
 
