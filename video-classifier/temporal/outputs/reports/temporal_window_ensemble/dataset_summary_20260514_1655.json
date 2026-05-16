@@ -1,0 +1,32 @@
+{
+  "annotated_blocks": 85327,
+  "background_blocks": 0,
+  "embedding_dim": 1024,
+  "filter_summary": {
+    "dropped_blocks": 56513,
+    "kept_relevant_blocks": 85327,
+    "min_class_count": 2,
+    "source_blocks": 141840
+  },
+  "num_action_pairs": 5009,
+  "num_blocks": 85327,
+  "num_noun_labels": 875,
+  "num_verb_labels": 444,
+  "num_videos": 355,
+  "relevant_blocks": 85327,
+  "run_timestamp": "20260514_1655",
+  "skipped_files": [],
+  "split_note": "Splits are block-level over relevant blocks after dropping singleton verb/noun classes, matching the MLP baseline.",
+  "split_sizes": {
+    "test": 9242,
+    "train": 66111,
+    "val": 9974
+  },
+  "temporal_window": {
+    "center_only_prediction": true,
+    "padding": "zero for missing neighbors or video boundaries",
+    "radius": 3,
+    "size": 7
+  },
+  "unannotated_blocks": 0
+}
