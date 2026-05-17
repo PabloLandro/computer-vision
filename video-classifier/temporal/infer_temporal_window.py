@@ -13,8 +13,6 @@ from classifier_data import (
     ANNOTATIONS_CSV,
     BACKGROUND_ID,
     DEFAULT_BLOCK_SIZE,
-    EMBEDDINGS_DIR,
-    MODELS_DIR,
     NOUN_CLASSES_CSV,
     PREDICTIONS_DIR,
     VERB_CLASSES_CSV,
@@ -42,9 +40,9 @@ USE_ENSEMBLE = True
 ENSEMBLE_SEEDS = [42, 123, 999]
 SINGLE_MODEL_SEED = ENSEMBLE_SEEDS[-1]
 
-MODEL_ROOT = MODELS_DIR / "temporal_window_ensemble"
+MODEL_ROOT = Path("outputs/models/temporal_window_ensemble")
 
-EMBEDDING_PATH = EMBEDDINGS_DIR / "unseen"
+EMBEDDING_DIR = Path("data/unseen")
 ANNOTATIONS_PATH = ANNOTATIONS_CSV
 PREDICTION_DIR = PREDICTIONS_DIR / "temporal_window_inference"
 PREDICTION_FILENAME_PREFIX = "block_predictions"
@@ -52,6 +50,7 @@ PREDICTION_FILENAME_PREFIX = "block_predictions"
 DEVICE = get_torch_device()
 
 OLLAMA_BASE_URL = "http://localhost:11434"
+GENERATE_RECIPE = True
 
 
 def make_run_timestamp() -> str:
@@ -62,26 +61,56 @@ def get_ollama_model() -> str | None:
     try:
         with urllib.request.urlopen(f"{OLLAMA_BASE_URL}/api/tags", timeout=3) as resp:
             data = json.loads(resp.read())
-        models = data.get("models", [])
-        return models[0]["name"] if models else None
     except Exception:
         return None
+
+    models = [model["name"] for model in data.get("models", []) if "name" in model]
+    if not models:
+        return None
+
+    print("\n--- Available Ollama Models ---")
+    for idx, model in enumerate(models):
+        print(f"[{idx}] {model}")
+
+    while True:
+        choice = input("Select Ollama model index for recipe generation: ").strip()
+
+        try:
+            model_idx = int(choice)
+        except ValueError:
+            print("Please enter a numeric model index.")
+            continue
+
+        if 0 <= model_idx < len(models):
+            return models[model_idx]
+
+        print(f"Please enter an index from 0 to {len(models) - 1}.")
 
 
 def ask_ollama_for_recipe(actions: list[str], model: str) -> str:
     unique_actions = sorted(set(actions))
     actions_text = "\n".join(f"- {a}" for a in unique_actions)
+
     prompt = (
         f"I observed the following cooking actions in a video:\n{actions_text}\n\n"
         "Based on these actions, infer what recipe is being prepared and write it out "
         "as a concise recipe with ingredients and steps."
     )
-    body = json.dumps({"model": model, "prompt": prompt, "stream": False}).encode()
+
+    body = json.dumps(
+        {
+            "model": model,
+            "prompt": prompt,
+            "stream": False,
+        }
+    ).encode()
+
     req = urllib.request.Request(
         f"{OLLAMA_BASE_URL}/api/generate",
         data=body,
         headers={"Content-Type": "application/json"},
     )
+
     with urllib.request.urlopen(req, timeout=120) as resp:
         return json.loads(resp.read())["response"]
 
@@ -89,29 +118,39 @@ def ask_ollama_for_recipe(actions: list[str], model: str) -> str:
 def generate_recipe(
     pred_verb: np.ndarray,
     pred_noun: np.ndarray,
-    true_verb: np.ndarray,
-    true_noun: np.ndarray,
+    pred_relevant: np.ndarray,
     verb_map: dict[int, str],
     noun_map: dict[int, str],
 ) -> None:
-    annotated_mask = (true_verb != BACKGROUND_ID) & (true_noun != BACKGROUND_ID)
+    relevant_mask = pred_relevant == 1
+
     actions = [
         f"{verb_map.get(int(v), str(v))} {noun_map.get(int(n), str(n))}"
-        for v, n, keep in zip(pred_verb, pred_noun, annotated_mask)
+        for v, n, keep in zip(pred_verb, pred_noun, relevant_mask)
         if keep
     ]
+
+    if not actions:
+        print("\nNo relevant actions detected — skipping recipe generation.")
+        return
+
     model = get_ollama_model()
     if model is None:
         print("\nOllama not available — skipping recipe generation.")
         return
+
     unique_actions = sorted(set(actions))
-    print("\n--- Prompt ---")
+
+    print("\n--- Ollama Prompt Actions ---")
     print("\n".join(f"- {a}" for a in unique_actions))
     print(f"\nGenerating recipe with {model}...")
+
     try:
         recipe = ask_ollama_for_recipe(actions, model)
-        print("\n--- Recipe ---")
+
+        print("\n--- Generated Recipe ---")
         print(recipe)
+
     except Exception as e:
         print(f"Recipe generation failed: {e}")
 
@@ -182,8 +221,6 @@ def load_video_blocks(
 def load_encoded_to_action(model_root: Path) -> dict[int, tuple[int, int]]:
     label_maps_path = model_root / "label_maps.json"
     if label_maps_path.exists():
-        import json
-
         with label_maps_path.open() as f:
             label_maps = json.load(f)
         return {
@@ -241,7 +278,7 @@ def predict_actions(
     models: list[Any],
     loader: Any,
     encoded_to_action: dict[int, tuple[int, int]],
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     pred_verbs = []
     pred_nouns = []
     pred_relevant = []
@@ -289,38 +326,8 @@ def flatten_metrics(metrics: dict[str, Any], prefix: str = "") -> dict[str, floa
             flattened[metric_key] = float(value)
     return flattened
 
-def print_action_comparison(
-    metas: list[BlockMeta],
-    pred_verb: np.ndarray,
-    pred_noun: np.ndarray,
-    true_verb: np.ndarray,
-    true_noun: np.ndarray,
-    verb_map: dict[int, str],
-    noun_map: dict[int, str],
-) -> None:
-    print("\n--- Block predictions ---")
-    print(f"{'block':>5}  {'frames':>12}  {'predicted':<30}  {'true':<30}  ok")
-    print("-" * 90)
-    for i, meta in enumerate(metas):
-        pv = verb_map.get(int(pred_verb[i]), str(pred_verb[i]))
-        pn = noun_map.get(int(pred_noun[i]), str(pred_noun[i]))
-        pred_str = f"{pv} {pn}"
 
-        tv, tn = int(true_verb[i]), int(true_noun[i])
-        if tv == BACKGROUND_ID or tn == BACKGROUND_ID:
-            true_str = "<background>"
-            mark = " "
-        else:
-            tv_name = verb_map.get(tv, str(tv))
-            tn_name = noun_map.get(tn, str(tn))
-            true_str = f"{tv_name} {tn_name}"
-            mark = "v" if (pred_verb[i] == true_verb[i] and pred_noun[i] == true_noun[i]) else "x"
-
-        frames = f"{meta.start_frame}-{meta.stop_frame}"
-        print(f"{i:>5}  {frames:>12}  {pred_str:<30}  {true_str:<30}  {mark}")
-
-
-def write_metrics_csv(path: Path, metrics: dict[str, float]) -> None:
+def write_metrics_csv(path: Path, metrics: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="") as f:
         writer = csv.writer(f)
@@ -418,11 +425,20 @@ def infer_embedding_file(
     )
     print(f"relevance_threshold: {RELEVANCE_THRESHOLD:.3f}")
 
+    if GENERATE_RECIPE:
+        generate_recipe(
+            pred_verb,
+            pred_noun,
+            pred_relevant,
+            verb_map,
+            noun_map,
+        )
+
 
 def main() -> None:
-    embedding_paths = sorted(EMBEDDINGS_DIR.glob("*.pkl"))
+    embedding_paths = sorted(EMBEDDING_DIR.glob("*.pkl"))
     if not embedding_paths:
-        raise FileNotFoundError(f"No .pkl files found in {EMBEDDINGS_DIR}")
+        raise FileNotFoundError(f"No .pkl files found in {EMBEDDING_DIR}")
 
     encoded_to_action = load_encoded_to_action(MODEL_ROOT)
     paths = model_paths(MODEL_ROOT)
@@ -437,8 +453,6 @@ def main() -> None:
             mode_name,
             run_timestamp,
         )
-
-    generate_recipe(pred_verb, pred_noun, y["verb"], y["noun"], verb_map, noun_map)
 
 
 if __name__ == "__main__":
