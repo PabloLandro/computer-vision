@@ -137,10 +137,10 @@ The inference pipeline is:
 3. For each `.pkl` file in `data/unseen`, load embeddings with `load_video_blocks()`.
 4. Build temporal windows using the same `build_temporal_windows()` function as training.
 5. Load each `TemporalWindowClassifier` checkpoint.
-6. Average action logits across models and decode the predicted action into verb and noun ids.
+6. Average action and relevance logits across models, decode the raw action prediction, and gate accepted actions with the predicted relevance probability.
 7. Write prediction and metrics CSV files under `outputs/predictions/temporal_window_inference/`.
 
-Inference can evaluate predictions when annotations exist for the unseen video id in `annotations_train_test.csv`. With `EVALUATE_RELEVANT_ONLY = True`, metrics are computed only on relevant, non-background blocks.
+Inference can evaluate predictions when annotations exist for the unseen video id in `annotations_train_test.csv`. Reports include oracle action metrics using ground-truth relevance for debugging plus deployed pipeline metrics using predicted relevance.
 
 ## Important Conventions
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import ast
 import csv
 import json
@@ -402,7 +404,23 @@ def write_predictions_csv(
     pred_relevant: Any,
     verb_map: dict[int, str],
     noun_map: dict[int, str],
+    p_relevant: Any | None = None,
+    accepted_pred_verb: Any | None = None,
+    accepted_pred_noun: Any | None = None,
 ) -> None:
+    if p_relevant is None:
+        p_relevant = [float(int(value)) for value in pred_relevant]
+    if accepted_pred_verb is None:
+        accepted_pred_verb = [
+            int(verb_id) if int(relevant) else BACKGROUND_ID
+            for verb_id, relevant in zip(pred_verb, pred_relevant, strict=True)
+        ]
+    if accepted_pred_noun is None:
+        accepted_pred_noun = [
+            int(noun_id) if int(relevant) else BACKGROUND_ID
+            for noun_id, relevant in zip(pred_noun, pred_relevant, strict=True)
+        ]
+
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="") as f:
         writer = csv.writer(f)
@@ -413,16 +431,21 @@ def write_predictions_csv(
                 "frame_start",
                 "frame_stop",
                 "true_action",
-                "pred_action",
+                "raw_pred_action",
+                "accepted_pred_action",
                 "true_relevant",
                 "pred_relevant",
+                "p_relevant",
             ]
         )
-        for meta, verb_id, noun_id, relevant in zip(
+        for meta, verb_id, noun_id, accepted_verb_id, accepted_noun_id, relevant, prob in zip(
             metas,
             pred_verb,
             pred_noun,
+            accepted_pred_verb,
+            accepted_pred_noun,
             pred_relevant,
+            p_relevant,
             strict=True,
         ):
             writer.writerow(
@@ -433,8 +456,10 @@ def write_predictions_csv(
                     meta.stop_frame,
                     action_name(meta.true_verb_id, meta.true_noun_id, verb_map, noun_map),
                     action_name(int(verb_id), int(noun_id), verb_map, noun_map),
+                    action_name(int(accepted_verb_id), int(accepted_noun_id), verb_map, noun_map),
                     bool(meta.true_relevant),
                     bool(int(relevant)),
+                    float(prob),
                 ]
             )
 
