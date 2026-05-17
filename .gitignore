@@ -2,3 +2,4 @@
 .venv/
 *.mp4
 video-classifier/wandb
+.DS_Store
