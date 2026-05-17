@@ -74,7 +74,8 @@
 
   \begin{block}{Introduction}
 
-    \textbf{V-JEPA 2} presents itself as a innovative and accessible way to identify complex physical interactions in videos.
+    \textbf{V-JEPA 2} provides an accessible way to encode complex physical
+    interactions in videos without fine-tuning the visual backbone.
 
     Understanding \textbf{egocentric cooking videos} is challenging:
     first-person footage captures natural kitchen activities but suffers
@@ -90,26 +91,29 @@
     \end{enumerate}
 
     \vskip0.3em
-    We exploit \textbf{V-JEPA2 embeddings} and train only
-    lightweight MLP heads, keeping compute requirements minimal.
+    We exploit \textbf{V-JEPA2 embeddings} and train a lightweight temporal
+    classifier on top, keeping compute requirements minimal.
   \end{block}
 
   \begin{block}{Dataset: EPIC-KITCHENS-100}
     \begin{itemize}
-      \item \textbf{276 videos} (249 train / 27 test)
-      \item First-person kitchen recordings
-      \item Actions labeled with \textbf{126 verb} and \textbf{353 noun} classes
-      \item Derivate binary relevance from actions and nouns
+      \item \textbf{407 embedded videos}, split into \textbf{170,007}
+            temporal blocks
+      \item \textbf{1024-D V-JEPA2 embeddings} per 64-frame block
+      \item \textbf{116,812} blocks overlap an annotation; \textbf{53,195}
+            are background/unannotated
+      \item \textbf{5,988} relevant verb--noun action-pair classes used by
+            the action head
     \end{itemize}
 
     \vskip0.3em
     \begin{center}
     \begin{tabular}{lr}
       \toprule
-      Split & Fraction \\
+      Block label & Fraction \\
       \midrule
-      Relevant    & $\approx$65.7\% \\
-      Irrelevant  & $\approx$34.3\% \\
+      Relevant    & 60.0\% \\
+      Irrelevant/background  & 40.0\% \\
       \bottomrule
     \end{tabular}
     \end{center}
@@ -118,11 +122,10 @@
 
   \begin{block}{Why V-JEPA2-small?}
     We use the \textbf{small} variant of V-JEPA2 (ViT-L backbone,
-    $\approx$307M parameters). Its compact footprint means the full
-    pipeline can run on a \textbf{MacBook Pro} or any consumer laptop
-    with sufficient GPU RAM — though embedding extraction remains slow
-    on local hardware. For this project we used \textbf{cloud compute}
-    to embed the full dataset in reasonable time.
+    $\approx$307M parameters). Its compact footprint makes local inference
+    feasible on a \textbf{MacBook Pro} or consumer laptop with sufficient GPU
+    RAM. For this project we used \textbf{cloud compute} to embed the dataset
+    in reasonable time, then trained the classifier on Apple MPS.
   \end{block}
 
 \end{column}
@@ -136,16 +139,20 @@
   \end{block}
 
   \begin{block}{Classification Heads}
-    \textbf{Relevance Classifier} — TBD
+    A shared temporal encoder reads a 7-block window (radius 3). Each
+    1024-D embedding is projected to 768 dimensions, learned positional
+    encodings are added, and a 2-layer, 8-head TransformerEncoder aggregates
+    context. Missing neighbors at video boundaries are zero-padded and masked.
 
     \vskip0.3em
-    \textbf{Action Classifier} — temporal Transformer over a 7-block window
-    (radius 3). Embeddings are projected $1024 \to 768$ with learned positional
-    encodings, then processed by a 2-layer, 8-head TransformerEncoder.
-    The center token is fed to a single linear head predicting the
-    \textbf{action} (a noun--verb pair).
-    A 3-seed ensemble averages logits at inference.
+    The center token feeds four MLP heads: \textbf{relevance} (binary),
+    \textbf{verb}, \textbf{noun}, and \textbf{action pair}. Relevance is
+    trained on all blocks; action losses are masked to valid relevant blocks.
 
+    \vskip0.3em
+    At inference, action prediction combines action, verb, and noun log
+    probabilities with a smoothed verb--noun pair prior ($w=0.25$). A
+    3-seed ensemble (42, 123, 999) averages logits before decoding.
   \end{block}
 
   \vskip0.5em
@@ -161,22 +168,29 @@
   \begin{block}{Why a Transformer Encoder?}
     A single block provides only a narrow temporal context.
     A Transformer encoder attends across the full sequence of block
-    embeddings, aggregating multi-window evidence before an MLP head
-    produces the final classification.
+    embeddings, aggregating multi-window evidence before the center-token
+    heads decide relevance and action labels.
   \end{block}
 
   \begin{block}{Results}
     \begin{center}
-    \begin{tabular}{lc}
+    \begin{tabular}{lcc}
       \toprule
-      Stage & Accuracy \\
+      Metric & Val & Test \\
       \midrule
-      Relevance     & XX\% \\
-      Action (verb) & XX\% \\
-      Noun          & XX\% \\
+      Relevance accuracy & 82.9\% & 84.0\% \\
+      Relevance F1       & 86.1\% & 87.0\% \\
+      Verb accuracy      & 74.4\% & 77.3\% \\
+      Noun accuracy      & 77.7\% & 80.3\% \\
+      Exact action       & 73.0\% & 75.8\% \\
       \bottomrule
     \end{tabular}
     \end{center}
+
+    \vskip0.3em
+    Action scores are measured after the relevance gate on true relevant
+    blocks. With oracle relevance, test exact-action accuracy reaches
+    \textbf{84.4\%}; on predicted relevant blocks it is \textbf{87.2\%}.
   \end{block}
 
   \begin{block}{LLM Post-Processing}
