@@ -1,0 +1,210 @@
+\documentclass[final, landscape]{beamer}
+
+\usepackage[size=a0, orientation=landscape, scale=1.4]{beamerposter}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit}
+
+% --- Theme ---
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+
+% --- Colors ---
+\definecolor{PrimaryBlue}{RGB}{0, 74, 153}
+\definecolor{LightGray}{RGB}{240, 240, 240}
+
+\setbeamercolor{headline}{fg=white, bg=PrimaryBlue}
+\setbeamercolor{block title}{fg=white, bg=PrimaryBlue}
+\setbeamercolor{block body}{fg=black, bg=LightGray}
+\setbeamercolor{footline}{fg=white, bg=PrimaryBlue}
+
+% --- Block style ---
+\setbeamertemplate{block begin}{
+  \vskip0.5ex
+  \begin{beamercolorbox}[rounded=true, shadow=true, leftskip=1em, colsep*=0.3ex]{block title}
+    \usebeamerfont{block title}\insertblocktitle
+  \end{beamercolorbox}
+  \vskip0.3ex
+  \begin{beamercolorbox}[rounded=true, shadow=true, leftskip=1em, rightskip=1em, colsep*=0.3ex]{block body}
+    \vskip0.3ex
+}
+\setbeamertemplate{block end}{
+  \end{beamercolorbox}
+  \vskip0.5ex
+}
+
+% --- Headline ---
+\setbeamertemplate{headline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \vskip1.2cm
+    \centering
+    {\Huge\bfseries Extracting Recipes from Cooking Videos\\[0.3cm]
+     using V-JEPA2 Embeddings}\\[0.7cm]
+    {\Large Michelangelo Bettini \\ \Large Pablo Landrove Pérez-Gorgoroso}\\[0.3cm]
+    {\large Università della Svizzera Italiana}\\[0.3cm]
+    {\normalsize \texttt{Group P}}
+    \vskip1.2cm
+  \end{beamercolorbox}
+}
+
+% --- Footline ---
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{footline}
+    \vskip0.5cm
+    \centering
+    {\normalsize Computer Vision Course Project, 2026}
+    \vskip0.5cm
+  \end{beamercolorbox}
+}
+
+% ============================================================
+\begin{document}
+\begin{frame}[t]
+
+% pipeline block defined inline — opened inside middle column below
+% (placeholder comment, actual block is in middle column)
+\begin{columns}[t]
+
+% ---- LEFT COLUMN ----
+\begin{column}{0.22\paperwidth}
+
+  \begin{block}{Introduction}
+
+    \textbf{V-JEPA 2} presents itself as a innovative and accessible way to identify complex physical interactions in videos.
+
+    Understanding \textbf{egocentric cooking videos} is challenging:
+    first-person footage captures natural kitchen activities but suffers
+    from clutter, and difficult recognition of objects.
+
+    \vskip0.3em
+    We propose a \textbf{two-stage pipeline}:
+    \begin{enumerate}
+      \item \textbf{Relevance filtering} — separate cooking actions
+            from background events.
+      \item \textbf{Action classification} — fine-grained verb/noun
+            recognition on relevant clips.
+    \end{enumerate}
+
+    \vskip0.3em
+    We exploit \textbf{V-JEPA2 embeddings} and train only
+    lightweight MLP heads, keeping compute requirements minimal.
+  \end{block}
+
+  \begin{block}{Dataset: EPIC-KITCHENS-100}
+    \begin{itemize}
+      \item \textbf{276 videos} (249 train / 27 test)
+      \item First-person kitchen recordings
+      \item Actions labeled with \textbf{126 verb} and \textbf{353 noun} classes
+      \item Derivate binary relevance from actions and nouns
+    \end{itemize}
+
+    \vskip0.3em
+    \begin{center}
+    \begin{tabular}{lr}
+      \toprule
+      Split & Fraction \\
+      \midrule
+      Relevant    & $\approx$65.7\% \\
+      Irrelevant  & $\approx$34.3\% \\
+      \bottomrule
+    \end{tabular}
+    \end{center}
+
+  \end{block}
+
+  \begin{block}{Why V-JEPA2-small?}
+    We use the \textbf{small} variant of V-JEPA2 (ViT-L backbone,
+    $\approx$307M parameters). Its compact footprint means the full
+    pipeline can run on a \textbf{MacBook Pro} or any consumer laptop
+    with sufficient GPU RAM — though embedding extraction remains slow
+    on local hardware. For this project we used \textbf{cloud compute}
+    to embed the full dataset in reasonable time.
+  \end{block}
+
+\end{column}
+
+% ---- MIDDLE COLUMN (wide — pipeline + details) ----
+\begin{column}{0.52\paperwidth}
+
+  \begin{block}{Pipeline Overview}
+    \centering
+    \includegraphics[width=\linewidth]{figures/pipeline2}
+  \end{block}
+
+  \begin{block}{Classification Heads}
+    \textbf{Relevance Classifier} — TBD
+
+    \vskip0.3em
+    \textbf{Action Classifier} — temporal Transformer over a 7-block window
+    (radius 3). Embeddings are projected $1024 \to 768$ with learned positional
+    encodings, then processed by a 2-layer, 8-head TransformerEncoder.
+    The center token is fed to a single linear head predicting the
+    \textbf{action} (a noun--verb pair).
+    A 3-seed ensemble averages logits at inference.
+
+  \end{block}
+
+  \vskip0.5em
+  \begin{center}
+    \includegraphics[width=\linewidth]{figures/kitchen}
+  \end{center}
+
+\end{column}
+
+% ---- RIGHT COLUMN ----
+\begin{column}{0.22\paperwidth}
+
+  \begin{block}{Why a Transformer Encoder?}
+    A single block provides only a narrow temporal context.
+    A Transformer encoder attends across the full sequence of block
+    embeddings, aggregating multi-window evidence before an MLP head
+    produces the final classification.
+  \end{block}
+
+  \begin{block}{Results}
+    \begin{center}
+    \begin{tabular}{lc}
+      \toprule
+      Stage & Accuracy \\
+      \midrule
+      Relevance     & XX\% \\
+      Action (verb) & XX\% \\
+      Noun          & XX\% \\
+      \bottomrule
+    \end{tabular}
+    \end{center}
+  \end{block}
+
+  \begin{block}{LLM Post-Processing}
+    The action classifier outputs a \textbf{sequence of (verb, noun) pairs}
+    aligned to video blocks.
+    We pass this sequence to \textbf{Llama 3.2} which
+    synthesizes the raw event list into a fluent, human-readable recipe:
+    coherent steps, resolved repetitions, and natural prose.
+
+    \vskip0.3em
+    This bridges the gap between frame-level predictions and
+    interpretable cooking instructions.
+  \end{block}
+
+  \begin{block}{Conclusion}
+    \begin{itemize}
+      \item \textbf{Two-stage design} (relevance + classification) cuts
+            background noise before fine-grained prediction.
+      \item \textbf{Transformer encoder} provides multi-block temporal
+            context with minimal added parameters.
+      \item \textbf{LLM post-processing} turns sparse event sequences
+            into readable recipes.
+      \item Pipeline runs on consumer hardware with no backbone tuning.
+    \end{itemize}
+  \end{block}
+
+\end{column}
+
+\end{columns}
+\end{frame}
+\end{document}
