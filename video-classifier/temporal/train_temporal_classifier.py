@@ -8,6 +8,11 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
+try:
+    import wandb
+except ImportError:
+    wandb = None
+
 from classifier_data import (
     ANNOTATIONS_CSV,
     BACKGROUND_ID,
@@ -50,6 +55,8 @@ TEMPORAL_PROJECTION_DROPOUT = 0.25
 VERB_HEAD_DROPOUT = 0.2
 NOUN_HEAD_DROPOUT = 0.30
 ACTION_HEAD_DROPOUT = 0.20
+WANDB_PROJECT = "action-classifier"
+USE_WANDB = wandb is not None
 
 PAIR_PRIOR_WEIGHT = 0.25
 PAIR_PRIOR_SMOOTHING = 1.0
@@ -368,6 +375,39 @@ def temporal_config(input_dim: int, num_actions: int) -> dict[str, Any]:
         "action_loss_weight": ACTION_LOSS_WEIGHT,
         "num_actions": int(num_actions),
     }
+
+
+def flatten_metrics(metrics: dict[str, Any], prefix: str = "") -> dict[str, Any]:
+    flattened = {}
+    for key, value in metrics.items():
+        metric_key = f"{prefix}/{key}" if prefix else str(key)
+        if isinstance(value, dict):
+            flattened.update(flatten_metrics(value, metric_key))
+        elif isinstance(value, (int, float, str, bool)) or value is None:
+            flattened[metric_key] = value
+    return flattened
+
+
+def start_wandb_run(
+    task_name: str,
+    config: dict[str, Any],
+    run_timestamp: str,
+) -> Any:
+    if not USE_WANDB:
+        print("W&B disabled: install with `pip install wandb` to log runs.")
+        return None
+    return wandb.init(
+        project=WANDB_PROJECT,
+        name=f"{task_name}-{run_timestamp}",
+        config=config,
+        reinit=True,
+    )
+
+
+def log_wandb_summary(metrics: dict[str, Any]) -> None:
+    if USE_WANDB and wandb.run is not None:
+        for key, value in flatten_metrics(metrics).items():
+            wandb.summary[key] = value
 
 
 def set_training_seed(seed: int) -> None:
@@ -719,6 +759,8 @@ def train_single_seed(
     noun_loss_fn = nn.CrossEntropyLoss()
     action_loss_fn = nn.CrossEntropyLoss()
     relevance_loss_fn = nn.CrossEntropyLoss()
+    if USE_WANDB and wandb.run is not None:
+        wandb.watch(model, log="gradients", log_freq=100)
 
     train_loader = make_temporal_loader(splits["train"], encodings, shuffle=True, seed=seed)
     val_loader = make_temporal_loader(splits["val"], encodings, shuffle=False)
@@ -832,6 +874,7 @@ def train_single_seed(
         scheduler.step(epoch_record["val_loss"])
         current_lr = optimizer.param_groups[0]["lr"]
         epoch_record["learning_rate"] = current_lr
+        epoch_record["best_val_loss"] = min(best_val_loss, epoch_record["val_loss"])
         history.append(epoch_record)
         print(
             f"temporal seed {seed} epoch {epoch:03d}: "
@@ -839,6 +882,15 @@ def train_single_seed(
             f"val_loss={epoch_record['val_loss']:.4f} "
             f"lr={current_lr:.6f}"
         )
+        if USE_WANDB and wandb.run is not None:
+            wandb.log({
+                "epoch": epoch,
+                "seed": seed,
+                "temporal/train_loss": epoch_record["train_loss"],
+                "temporal/val_loss": epoch_record["val_loss"],
+                "temporal/best_val_loss": epoch_record["best_val_loss"],
+                "temporal/learning_rate": current_lr,
+            })
 
         if epoch_record["val_loss"] < best_val_loss:
             best_val_loss = epoch_record["val_loss"]
@@ -950,37 +1002,65 @@ def train_temporal_classifier(
         "ensemble": {},
         "config": temporal_config(x.shape[1], len(encodings["encoded_to_action"])),
     }
+    wandb_base_config = {
+        **result["config"],
+        "task": "temporal",
+        "classifier": classifier_name,
+        "run_timestamp": run_timestamp,
+        "device": str(device),
+        "num_samples": int(len(x)),
+        "num_train_samples": int(len(splits["train"])),
+        "num_val_samples": int(len(splits["val"])),
+        "num_test_samples": int(len(splits["test"])),
+        "num_verbs": int(len(encodings["encoded_to_verb"])),
+        "num_nouns": int(len(encodings["encoded_to_noun"])),
+    }
 
     if USE_SEED_ENSEMBLE:
         best_paths = []
         for seed in ENSEMBLE_SEEDS:
-            best_path, seed_metrics = train_single_seed(
-                seed,
-                x,
-                y,
-                splits,
-                encodings,
-                device,
-                model_root,
+            start_wandb_run(
+                f"temporal-seed-{seed}",
+                {**wandb_base_config, "seed": seed},
+                run_timestamp,
             )
-            best_paths.append(best_path)
-            model = load_temporal_model(best_path, x, encodings, device)
-            test_loader = make_temporal_loader(splits["test"], encodings, shuffle=False)
-            pred_verb, pred_noun, pred_relevant, _ = predict_single_model(
-                model,
-                test_loader,
-                encodings,
-                pair_prior,
-                device,
-            )
-            seed_metrics["test"] = compute_pipeline_metrics(
-                y,
-                splits["test"],
-                pred_verb,
-                pred_noun,
-                pred_relevant,
-            )
-            result["per_seed"][str(seed)] = seed_metrics
+            try:
+                best_path, seed_metrics = train_single_seed(
+                    seed,
+                    x,
+                    y,
+                    splits,
+                    encodings,
+                    device,
+                    model_root,
+                )
+                best_paths.append(best_path)
+                model = load_temporal_model(best_path, x, encodings, device)
+                test_loader = make_temporal_loader(splits["test"], encodings, shuffle=False)
+                pred_verb, pred_noun, pred_relevant, _ = predict_single_model(
+                    model,
+                    test_loader,
+                    encodings,
+                    pair_prior,
+                    device,
+                )
+                seed_metrics["test"] = compute_pipeline_metrics(
+                    y,
+                    splits["test"],
+                    pred_verb,
+                    pred_noun,
+                    pred_relevant,
+                )
+                log_wandb_summary({
+                    "best_val_loss": seed_metrics["best_val_loss"],
+                    "val": seed_metrics["val"],
+                    "test": seed_metrics["test"],
+                    "best_model_path": seed_metrics["best_model_path"],
+                })
+                result["per_seed"][str(seed)] = seed_metrics
+            finally:
+                if USE_WANDB and wandb.run is not None:
+                    wandb.finish()
 
         save_label_maps(model_root, encodings)
         models = [
@@ -1017,15 +1097,24 @@ def train_temporal_classifier(
                 )
     else:
         single_model_dir = MODELS_DIR / "temporal_window"
-        best_path, seed_metrics = train_single_seed(
-            RANDOM_SEED,
-            x,
-            y,
-            splits,
-            encodings,
-            device,
-            single_model_dir,
+        start_wandb_run(
+            "temporal",
+            {**wandb_base_config, "seed": RANDOM_SEED},
+            run_timestamp,
         )
+        try:
+            best_path, seed_metrics = train_single_seed(
+                RANDOM_SEED,
+                x,
+                y,
+                splits,
+                encodings,
+                device,
+                single_model_dir,
+            )
+        finally:
+            if USE_WANDB and wandb.run is not None and "seed_metrics" not in locals():
+                wandb.finish()
         save_label_maps(single_model_dir, encodings)
         model = load_temporal_model(best_path, x, encodings, device)
         result["history"] = seed_metrics["history"]
@@ -1059,6 +1148,14 @@ def train_temporal_classifier(
                     p_relevant=p_relevant,
                 )
         result["per_seed"][str(RANDOM_SEED)] = seed_metrics
+        log_wandb_summary({
+            "best_val_loss": seed_metrics["best_val_loss"],
+            "val": seed_metrics["val"],
+            "test": seed_metrics["test"],
+            "best_model_path": seed_metrics["best_model_path"],
+        })
+        if USE_WANDB and wandb.run is not None:
+            wandb.finish()
 
     write_json(report_dir / f"metrics_{run_timestamp}.json", result)
     return result

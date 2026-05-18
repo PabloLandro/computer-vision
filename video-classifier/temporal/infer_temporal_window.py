@@ -87,9 +87,19 @@ def get_ollama_model() -> str | None:
         print(f"Please enter an index from 0 to {len(models) - 1}.")
 
 
+def collapse_consecutive_actions(actions: list[str]) -> list[str]:
+    collapsed = []
+    previous_action = None
+    for action in actions:
+        if action != previous_action:
+            collapsed.append(action)
+        previous_action = action
+    return collapsed
+
+
 def ask_ollama_for_recipe(actions: list[str], model: str) -> str:
-    unique_actions = sorted(set(actions))
-    actions_text = "\n".join(f"- {a}" for a in unique_actions)
+    prompt_actions = collapse_consecutive_actions(actions)
+    actions_text = "\n".join(f"- {a}" for a in prompt_actions)
 
     prompt = (
         f"I observed the following cooking actions in a video:\n{actions_text}\n\n"
@@ -139,10 +149,10 @@ def generate_recipe(
         print("\nOllama not available — skipping recipe generation.")
         return
 
-    unique_actions = sorted(set(actions))
+    prompt_actions = collapse_consecutive_actions(actions)
 
     print("\n--- Ollama Prompt Actions ---")
-    print("\n".join(f"- {a}" for a in unique_actions))
+    print("\n".join(f"- {a}" for a in prompt_actions))
     print(f"\nGenerating recipe with {model}...")
 
     try:
