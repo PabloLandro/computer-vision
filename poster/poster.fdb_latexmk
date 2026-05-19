@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1779033801.43974 "/Users/mike/Documents/USI/2nd_semester/computer_vision/computer-vision/poster/poster.tex" "poster.pdf" "poster" 1779033802.30202 0
-  "/Users/mike/Documents/USI/2nd_semester/computer_vision/computer-vision/poster/poster.tex" 1779033801.00889 7380 f49830469409dc25dfe8331e69e1de1e ""
+["pdflatex"] 1779206911.08615 "/Users/mike/Documents/USI/2nd_semester/computer_vision/computer-vision/poster/poster.tex" "poster.pdf" "poster" 1779206912.00101 0
+  "/Users/mike/Documents/USI/2nd_semester/computer_vision/computer-vision/poster/poster.tex" 1779206910.86762 7116 c879d79d5df3a6ca5e1a4e8ae1f57e1a ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
@@ -215,12 +215,13 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1779031388 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1779031378 3636769 33305c803727909c2b7551103cdd7898 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
+  "figures/benchmark.png" 1779032632.71106 43878 9eb16e96dfdd71d3d6806606b774bc4b ""
   "figures/kitchen.png" 1779033124.3 1369988 b9f25407e8a7af4097abc97da0d43448 ""
-  "figures/pipeline2.pdf" 1779033124.30029 18025 964a0d9721fa9616dd6a508a72186766 ""
-  "poster.aux" 1779033802.2275 595 0c4a8a6d3317b7b34d7da3e30267e179 "pdflatex"
-  "poster.nav" 1779033802.22812 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
-  "poster.out" 1779033801.87339 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "poster.tex" 1779033801.00889 7380 f49830469409dc25dfe8331e69e1de1e ""
+  "figures/pipeline3.png" 1779203649.24372 164494 117c592b0190954563ec149d2d2da8a8 ""
+  "poster.aux" 1779206911.95395 595 0c4a8a6d3317b7b34d7da3e30267e179 "pdflatex"
+  "poster.nav" 1779206911.9546 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
+  "poster.out" 1779206911.50061 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "poster.tex" 1779206910.86762 7116 c879d79d5df3a6ca5e1a4e8ae1f57e1a ""
   (generated)
   "poster.aux"
   "poster.log"

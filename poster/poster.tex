@@ -73,37 +73,30 @@
 \begin{column}{0.22\paperwidth}
 
   \begin{block}{Introduction}
-
-    \textbf{V-JEPA 2} provides an accessible way to encode complex physical
-    interactions in videos without fine-tuning the visual backbone.
-
-    Understanding \textbf{egocentric cooking videos} is challenging:
-    first-person footage captures natural kitchen activities but suffers
-    from clutter, and difficult recognition of objects.
+    \begin{itemize}
+      \item Goal: extract \textbf{recipe steps} from egocentric cooking videos.
+      \item Challenge: cluttered kitchens, occlusions, and background actions.
+      \item Backbone: frozen \textbf{V-JEPA2} video embeddings.
+      \item Classifier: lightweight temporal model on top of embeddings.
+    \end{itemize}
 
     \vskip0.3em
-    We propose a \textbf{two-stage pipeline}:
+    \textbf{Two-stage pipeline}
     \begin{enumerate}
-      \item \textbf{Relevance filtering} — separate cooking actions
-            from background events.
-      \item \textbf{Action classification} — fine-grained verb/noun
-            recognition on relevant clips.
+      \item \textbf{Relevance filter}: cooking vs. background.
+      \item \textbf{Action classifier}: verb, noun, and verb--noun pair.
     \end{enumerate}
-
-    \vskip0.3em
-    We exploit \textbf{V-JEPA2 embeddings} and train a lightweight temporal
-    classifier on top, keeping compute requirements minimal.
   \end{block}
 
   \begin{block}{Dataset: EPIC-KITCHENS-100}
     \begin{itemize}
-      \item \textbf{407 embedded videos}, split into \textbf{170,007}
-            temporal blocks
-      \item \textbf{1024-D V-JEPA2 embeddings} per 64-frame block
-      \item \textbf{116,812} blocks overlap an annotation; \textbf{53,195}
-            are background/unannotated
-      \item \textbf{5,988} relevant verb--noun action-pair classes used by
-            the action head
+      \item \textbf{408} embedded videos.
+      \item \textbf{170,299} temporal blocks.
+      \item \textbf{1024-D} V-JEPA2 embedding per 64-frame block.
+      \item \textbf{116,895} blocks overlap an annotation.
+      \item \textbf{53,404} background/unannotated blocks.
+      \item \textbf{7,008} dataset action pairs;
+            \textbf{2,721} action-head classes.
     \end{itemize}
 
     \vskip0.3em
@@ -112,8 +105,8 @@
       \toprule
       Block label & Fraction \\
       \midrule
-      Relevant    & 60.0\% \\
-      Irrelevant/background  & 40.0\% \\
+      Relevant    & 27.9\% \\
+      Non-relevant & 72.1\% \\
       \bottomrule
     \end{tabular}
     \end{center}
@@ -121,11 +114,17 @@
   \end{block}
 
   \begin{block}{Why V-JEPA2-small?}
-    We use the \textbf{small} variant of V-JEPA2 (ViT-L backbone,
-    $\approx$307M parameters). Its compact footprint makes local inference
-    feasible on a \textbf{MacBook Pro} or consumer laptop with sufficient GPU
-    RAM. For this project we used \textbf{cloud compute} to embed the dataset
-    in reasonable time, then trained the classifier on Apple MPS.
+    \begin{itemize}
+      \item \textbf{Small} V-JEPA2 variant.
+      \item Frozen backbone: no video-model fine-tuning.
+      \item Cloud compute for dataset embedding.
+      \item Classifier training on Apple MPS.
+    \end{itemize}
+
+    \vskip0.3em
+    \begin{center}
+      \includegraphics[width=0.70\linewidth]{figures/benchmark}
+    \end{center}
   \end{block}
 
 \end{column}
@@ -135,24 +134,33 @@
 
   \begin{block}{Pipeline Overview}
     \centering
-    \includegraphics[width=\linewidth]{figures/pipeline2}
+    \includegraphics[width=\linewidth]{figures/pipeline3}
   \end{block}
 
   \begin{block}{Classification Heads}
-    A shared temporal encoder reads a 7-block window (radius 3). Each
-    1024-D embedding is projected to 768 dimensions, learned positional
-    encodings are added, and a 2-layer, 8-head TransformerEncoder aggregates
-    context. Missing neighbors at video boundaries are zero-padded and masked.
-
-    \vskip0.3em
-    The center token feeds four MLP heads: \textbf{relevance} (binary),
-    \textbf{verb}, \textbf{noun}, and \textbf{action pair}. Relevance is
-    trained on all blocks; action losses are masked to valid relevant blocks.
-
-    \vskip0.3em
-    At inference, action prediction combines action, verb, and noun log
-    probabilities with a smoothed verb--noun pair prior ($w=0.25$). A
-    3-seed ensemble (42, 123, 999) averages logits before decoding.
+    \begin{columns}[t]
+      \begin{column}{0.48\linewidth}
+        \textbf{Temporal encoder}
+        \begin{itemize}
+          \item \textbf{7-block window} around target.
+          \item Zero-padding at boundaries.
+          \item 1024-D embeddings $\rightarrow$ \textbf{768-D}.
+          \item Learned position embeddings.
+          \item \textbf{2-layer, 8-head TransformerEncoder}.
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.48\linewidth}
+        \textbf{Heads and decoding}
+        \begin{itemize}
+          \item Center token feeds all heads.
+          \item Heads: relevance, verb, noun, action pair.
+          \item Relevance trains on \textbf{all} blocks.
+          \item Action losses use annotated relevant blocks.
+          \item Decoding adds pair prior, $w=0.25$.
+          \item Single-model and 3-model ensemble with averaged predictions.
+        \end{itemize}
+      \end{column}
+    \end{columns}
   \end{block}
 
   \vskip0.5em
@@ -166,10 +174,13 @@
 \begin{column}{0.22\paperwidth}
 
   \begin{block}{Why a Transformer Encoder?}
-    A single block provides only a narrow temporal context.
-    A Transformer encoder attends across the full sequence of block
-    embeddings, aggregating multi-window evidence before the center-token
-    heads decide relevance and action labels.
+    \begin{itemize}
+      \item Single blocks miss before/after context.
+      \item Attention compares all 7 neighboring blocks.
+      \item The model can see action setup and completion.
+      \item Masking handles short windows at video boundaries.
+      \item Only the center block is classified.
+    \end{itemize}
   \end{block}
 
   \begin{block}{Results}
@@ -178,42 +189,40 @@
       \toprule
       Metric & Val & Test \\
       \midrule
-      Relevance accuracy & 82.9\% & 84.0\% \\
-      Relevance F1       & 86.1\% & 87.0\% \\
-      Verb accuracy      & 74.4\% & 77.3\% \\
-      Noun accuracy      & 77.7\% & 80.3\% \\
-      Exact action       & 73.0\% & 75.8\% \\
+      Relevance accuracy & 91.6\% & 92.3\% \\
+      Relevance F1       & 84.8\% & 86.1\% \\
+      Verb accuracy      & 94.4\% & 95.6\% \\
+      Noun accuracy      & 98.3\% & 98.7\% \\
+      Exact action       & 93.8\% & 95.3\% \\
       \bottomrule
     \end{tabular}
     \end{center}
 
     \vskip0.3em
-    Action scores are measured after the relevance gate on true relevant
-    blocks. With oracle relevance, test exact-action accuracy reaches
-    \textbf{84.4\%}; on predicted relevant blocks it is \textbf{87.2\%}.
+    \begin{itemize}
+      \item Action rows: predicted relevant blocks for the ensemble.
+      \item Oracle relevance: \textbf{91.8\%} test exact action.
+      \item Predicted relevant blocks: \textbf{95.3\%} test exact action.
+    \end{itemize}
   \end{block}
 
   \begin{block}{LLM Post-Processing}
-    The action classifier outputs a \textbf{sequence of (verb, noun) pairs}
-    aligned to video blocks.
-    We pass this sequence to \textbf{Llama 3.2} which
-    synthesizes the raw event list into a fluent, human-readable recipe:
-    coherent steps, resolved repetitions, and natural prose.
-
-    \vskip0.3em
-    This bridges the gap between frame-level predictions and
-    interpretable cooking instructions.
+    \begin{itemize}
+      \item Input: sequence of predicted \textbf{(verb, noun)} pairs.
+      \item Model: \textbf{Llama 3.2}.
+      \item Output: readable recipe steps.
+      \item Repeated events are merged.
+      \item Sparse predictions become natural instructions.
+    \end{itemize}
   \end{block}
 
   \begin{block}{Conclusion}
     \begin{itemize}
-      \item \textbf{Two-stage design} (relevance + classification) cuts
-            background noise before fine-grained prediction.
-      \item \textbf{Transformer encoder} provides multi-block temporal
-            context with minimal added parameters.
-      \item \textbf{LLM post-processing} turns sparse event sequences
-            into readable recipes.
-      \item Pipeline runs on consumer hardware with no backbone tuning.
+      \item Frozen V-JEPA2 embeddings reduce training cost.
+      \item Relevance filtering removes background noise.
+      \item Transformer context improves block-level decisions.
+      \item Multi-head decoding predicts coherent verb--noun actions.
+      \item LLM post-processing turns actions into recipes.
     \end{itemize}
   \end{block}
 
