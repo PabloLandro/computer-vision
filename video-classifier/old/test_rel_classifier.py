@@ -16,7 +16,7 @@ from relevance_classifier import (
 
 def test() -> None:
     embeddings_dir = Path("../embeddings/test")
-    csv_path = Path("../data/cooking/EPIC_descriptions.csv")
+    csv_path = Path("../../data/cooking/EPIC_descriptions.csv")
     checkpoint_path = Path("checkpoint/relevance_classifier.pt")
 
     batch_size = 128

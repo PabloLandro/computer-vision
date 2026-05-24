@@ -18,7 +18,7 @@ from tqdm import tqdm
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-VIDEO_CLASSIFIER_DIR = SCRIPT_DIR.parent
+VIDEO_CLASSIFIER_DIR = SCRIPT_DIR
 REPO_ROOT = VIDEO_CLASSIFIER_DIR.parent
 
 ANNOTATIONS_CSV = REPO_ROOT / "data" / "annotations" / "annotations_train_test.csv"

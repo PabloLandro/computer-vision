@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.17)  19 MAY 2026 18:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.17)  19 MAY 2026 20:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -905,19 +905,19 @@ File: figures/benchmark.png Graphic file (type png)
 <use figures/benchmark.png>
 Package pdftex.def Info: figures/benchmark.png  used on input line 232.
 (pdftex.def)             Requested size: 520.98761pt x 312.61307pt.
-<figures/pipeline3.png, id=95, 1056.3465pt x 119.9682pt>
-File: figures/pipeline3.png Graphic file (type png)
-<use figures/pipeline3.png>
-Package pdftex.def Info: figures/pipeline3.png  used on input line 232.
-(pdftex.def)             Requested size: 1759.19135pt x 199.80614pt.
-<figures/kitchen.png, id=133, 1284.8pt x 722.7pt>
+<figures/pipeline4.pdf, id=95, 1095.09125pt x 147.25012pt>
+File: figures/pipeline4.pdf Graphic file (type pdf)
+<use figures/pipeline4.pdf>
+Package pdftex.def Info: figures/pipeline4.pdf  used on input line 232.
+(pdftex.def)             Requested size: 1759.19135pt x 236.56662pt.
+<figures/kitchen.png, id=132, 1284.8pt x 722.7pt>
 File: figures/kitchen.png Graphic file (type png)
 <use figures/kitchen.png>
 Package pdftex.def Info: figures/kitchen.png  used on input line 232.
-(pdftex.def)             Requested size: 1759.19135pt x 989.57474pt.
+(pdftex.def)             Requested size: 1724.0pt x 969.78038pt.
  [1{/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
- <./figures/benchmark.png> <./figures/pipeline3.png> <./figures/kitchen.png>]
+ <./figures/benchmark.png> <./figures/pipeline4.pdf> <./figures/kitchen.png>]
 \tf@nav=\write6
 \openout6 = `poster.nav'.
 
@@ -936,18 +936,18 @@ Package rerunfilecheck Info: File `poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26885 strings out of 467525
- 534616 string characters out of 5418982
- 1032383 words of memory out of 5000000
- 55254 multiletter control sequences out of 15000+600000
+ 26883 strings out of 467525
+ 534586 string characters out of 5418982
+ 1032452 words of memory out of 5000000
+ 55252 multiletter control sequences out of 15000+600000
  636473 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,459b,1203s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi17.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on poster.pdf (1 page, 2107891 bytes).
+Output written on poster.pdf (1 page, 2041694 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
+ 296 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
  3 named destinations out of 1000 (max. 500000)
  676 words of extra memory for PDF output out of 10000 (max. 10000000)
 

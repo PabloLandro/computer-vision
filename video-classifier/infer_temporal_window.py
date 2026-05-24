@@ -13,8 +13,10 @@ from classifier_data import (
     ANNOTATIONS_CSV,
     BACKGROUND_ID,
     DEFAULT_BLOCK_SIZE,
+    MODELS_DIR,
     NOUN_CLASSES_CSV,
     PREDICTIONS_DIR,
+    REPO_ROOT,
     VERB_CLASSES_CSV,
     BlockMeta,
     best_overlapping_annotation,
@@ -40,9 +42,9 @@ USE_ENSEMBLE = True
 ENSEMBLE_SEEDS = [42, 123, 999]
 SINGLE_MODEL_SEED = ENSEMBLE_SEEDS[-1]
 
-MODEL_ROOT = Path("outputs/models/temporal_window_ensemble")
+MODEL_ROOT = MODELS_DIR / "temporal_window_ensemble"
 
-EMBEDDING_DIR = Path("data/unseen")
+EMBEDDING_DIR = REPO_ROOT / "data" / "unseen"
 ANNOTATIONS_PATH = ANNOTATIONS_CSV
 PREDICTION_DIR = PREDICTIONS_DIR / "temporal_window_inference"
 PREDICTION_FILENAME_PREFIX = "block_predictions"
