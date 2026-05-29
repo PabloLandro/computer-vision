@@ -36,8 +36,6 @@ from train_temporal_classifier import (
     compute_relevance_metrics,
 )
 
-
-# Inference settings.
 USE_ENSEMBLE = True
 ENSEMBLE_SEEDS = [42, 123, 999]
 SINGLE_MODEL_SEED = ENSEMBLE_SEEDS[-1]
