@@ -1,0 +1,426 @@
+video_id,block_index,frame_start,frame_stop,true_action,raw_pred_action,accepted_pred_action,true_relevant,pred_relevant,p_relevant
+P28_04,0,0,63,<background>,chop onion,<background>,False,False,7.410669786622748e-05
+P28_04,1,64,127,<background>,put-down pepper,<background>,False,False,0.00021048792405053973
+P28_04,2,128,191,<background>,put-down pepper,<background>,False,False,0.00014687428483739495
+P28_04,3,192,255,open drawer,put-down pepper,<background>,False,False,0.0007377488072961569
+P28_04,4,256,319,close drawer,take pepper,<background>,False,False,0.0002208018267992884
+P28_04,5,320,383,<background>,put-down pepper,<background>,False,False,6.301682878984138e-05
+P28_04,6,384,447,take knife,take pepper,<background>,False,False,0.003230336122214794
+P28_04,7,448,511,<background>,take potato,<background>,False,False,0.011850914917886257
+P28_04,8,512,575,take potato,cut potato,cut potato,True,True,0.6389328241348267
+P28_04,9,576,639,cut potato,cut potato,cut potato,True,True,0.9626691937446594
+P28_04,10,640,703,cut potato,cut potato,cut potato,True,True,0.9839276671409607
+P28_04,11,704,767,cut potato,cut potato,cut potato,True,True,0.9827421307563782
+P28_04,12,768,831,cut potato,cut potato,cut potato,True,True,0.9822486639022827
+P28_04,13,832,895,cut potato,cut potato,cut potato,True,True,0.9735789895057678
+P28_04,14,896,959,cut potato,cut potato,cut potato,True,True,0.9683603048324585
+P28_04,15,960,1023,cut potato,cut potato,cut potato,True,True,0.9561219811439514
+P28_04,16,1024,1087,cut potato,cut potato,cut potato,True,True,0.9717456698417664
+P28_04,17,1088,1151,cut potato,cut potato,cut potato,True,True,0.9806236624717712
+P28_04,18,1152,1215,cut potato,cut potato,cut potato,True,True,0.983737587928772
+P28_04,19,1216,1279,cut potato,cut potato,cut potato,True,True,0.9732326865196228
+P28_04,20,1280,1343,cut potato,cut potato,cut potato,True,True,0.9696699380874634
+P28_04,21,1344,1407,cut potato,cut potato,cut potato,True,True,0.9501510262489319
+P28_04,22,1408,1471,cut potato,cut potato,cut potato,True,True,0.9527528882026672
+P28_04,23,1472,1535,cut potato,cut potato,cut potato,True,True,0.9515248537063599
+P28_04,24,1536,1599,cut potato,cut potato,cut potato,True,True,0.9562070965766907
+P28_04,25,1600,1663,cut potato,cut potato,cut potato,True,True,0.9672214388847351
+P28_04,26,1664,1727,cut potato,cut potato,cut potato,True,True,0.9684303998947144
+P28_04,27,1728,1791,cut potato,cut potato,cut potato,True,True,0.9391648173332214
+P28_04,28,1792,1855,cut potato,cut potato,cut potato,True,True,0.9018534421920776
+P28_04,29,1856,1919,cut potato,cut potato,cut potato,True,True,0.909623920917511
+P28_04,30,1920,1983,cut potato,cut potato,cut potato,True,True,0.8453900218009949
+P28_04,31,1984,2047,cut potato,cut potato,cut potato,True,True,0.9231728911399841
+P28_04,32,2048,2111,cut potato,cut potato,cut potato,True,True,0.9717485904693604
+P28_04,33,2112,2175,cut potato,cut potato,cut potato,True,True,0.9701901078224182
+P28_04,34,2176,2239,cut potato,cut potato,cut potato,True,True,0.9767304062843323
+P28_04,35,2240,2303,cut potato,cut potato,cut potato,True,True,0.9827568531036377
+P28_04,36,2304,2367,cut potato,cut potato,cut potato,True,True,0.973724901676178
+P28_04,37,2368,2431,cut potato,cut potato,cut potato,True,True,0.9796104431152344
+P28_04,38,2432,2495,cut potato,cut potato,cut potato,True,True,0.9748477935791016
+P28_04,39,2496,2559,cut potato,cut potato,cut potato,True,True,0.9697400331497192
+P28_04,40,2560,2623,cut potato,cut potato,cut potato,True,True,0.9648987650871277
+P28_04,41,2624,2687,cut potato,cut potato,cut potato,True,True,0.931312084197998
+P28_04,42,2688,2751,cut potato,cut potato,cut potato,True,True,0.9082423448562622
+P28_04,43,2752,2815,cut potato,cut potato,cut potato,True,True,0.9297528862953186
+P28_04,44,2816,2879,cut potato,cut potato,cut potato,True,True,0.9305323958396912
+P28_04,45,2880,2943,cut potato,cut potato,cut potato,True,True,0.8504481315612793
+P28_04,46,2944,3007,cut potato,cut potato,cut potato,True,True,0.844582736492157
+P28_04,47,3008,3071,cut potato,cut potato,cut potato,True,True,0.8348075747489929
+P28_04,48,3072,3135,take potato,cut potato,cut potato,True,True,0.7408069968223572
+P28_04,49,3136,3199,take potato,cut potato,cut potato,True,True,0.7884911894798279
+P28_04,50,3200,3263,<background>,cut potato,cut potato,False,True,0.60710608959198
+P28_04,51,3264,3327,<background>,cut potato,cut potato,False,True,0.6494336128234863
+P28_04,52,3328,3391,<background>,cut potato,cut potato,False,True,0.7942174673080444
+P28_04,53,3392,3455,take potato,cut potato,cut potato,True,True,0.5842781662940979
+P28_04,54,3456,3519,cut potato,cut potato,cut potato,True,True,0.6083268523216248
+P28_04,55,3520,3583,cut potato,cut potato,cut potato,True,True,0.7707680463790894
+P28_04,56,3584,3647,cut potato,cut potato,cut potato,True,True,0.6455209255218506
+P28_04,57,3648,3711,cut potato,cut potato,cut potato,True,True,0.631517767906189
+P28_04,58,3712,3775,cut potato,cut potato,cut potato,True,True,0.6276481747627258
+P28_04,59,3776,3839,cut potato,cut potato,cut potato,True,True,0.5290740728378296
+P28_04,60,3840,3903,cut potato,cut potato,cut potato,True,True,0.6083220839500427
+P28_04,61,3904,3967,cut potato,cut potato,cut potato,True,True,0.7488309741020203
+P28_04,62,3968,4031,cut potato,cut potato,cut potato,True,True,0.7206664681434631
+P28_04,63,4032,4095,cut potato,cut potato,cut potato,True,True,0.8123799562454224
+P28_04,64,4096,4159,take potato,cut potato,cut potato,True,True,0.9083175659179688
+P28_04,65,4160,4223,cut potato,cut potato,cut potato,True,True,0.8945879936218262
+P28_04,66,4224,4287,cut potato,cut potato,cut potato,True,True,0.8977254629135132
+P28_04,67,4288,4351,cut potato,cut potato,cut potato,True,True,0.8513196706771851
+P28_04,68,4352,4415,cut potato,cut potato,cut potato,True,True,0.6971096992492676
+P28_04,69,4416,4479,cut potato,cut potato,cut potato,True,True,0.5912742614746094
+P28_04,70,4480,4543,cut potato,cut potato,<background>,True,False,0.4315766394138336
+P28_04,71,4544,4607,cut potato,cut potato,<background>,True,False,0.3276100158691406
+P28_04,72,4608,4671,cut potato,cut potato,<background>,True,False,0.27020978927612305
+P28_04,73,4672,4735,cut potato,cut potato,<background>,True,False,0.3344842791557312
+P28_04,74,4736,4799,cut potato,cut potato,<background>,True,False,0.33943256735801697
+P28_04,75,4800,4863,cut potato,cut potato,<background>,True,False,0.4462507963180542
+P28_04,76,4864,4927,cut potato,cut potato,<background>,True,False,0.46270856261253357
+P28_04,77,4928,4991,cut potato,cut potato,cut potato,True,True,0.70002281665802
+P28_04,78,4992,5055,<background>,cut potato,<background>,False,False,0.3531225025653839
+P28_04,79,5056,5119,<background>,cut potato,<background>,False,False,0.3438427746295929
+P28_04,80,5120,5183,<background>,cut potato,cut potato,False,True,0.6423367261886597
+P28_04,81,5184,5247,cut potato,cut potato,cut potato,True,True,0.5537201762199402
+P28_04,82,5248,5311,cut potato,cut potato,cut potato,True,True,0.5119820237159729
+P28_04,83,5312,5375,<background>,cut potato,<background>,False,False,0.2831239402294159
+P28_04,84,5376,5439,<background>,cut potato,<background>,False,False,0.2324025183916092
+P28_04,85,5440,5503,<background>,cut potato,<background>,False,False,0.09951796382665634
+P28_04,86,5504,5567,<background>,cut potato,<background>,False,False,0.05305052921175957
+P28_04,87,5568,5631,<background>,cut potato,<background>,False,False,0.07532628625631332
+P28_04,88,5632,5695,<background>,cut potato,<background>,False,False,0.03579656034708023
+P28_04,89,5696,5759,<background>,cut potato,<background>,False,False,0.049034930765628815
+P28_04,90,5760,5823,<background>,cut potato,<background>,False,False,0.07080613076686859
+P28_04,91,5824,5887,<background>,cut potato,<background>,False,False,0.1217358261346817
+P28_04,92,5888,5951,<background>,cut potato,<background>,False,False,0.29183825850486755
+P28_04,93,5952,6015,<background>,cut potato,<background>,False,False,0.4701572060585022
+P28_04,94,6016,6079,<background>,cut potato,cut potato,False,True,0.5374003648757935
+P28_04,95,6080,6143,<background>,cut potato,cut potato,False,True,0.6039190292358398
+P28_04,96,6144,6207,<background>,cut potato,cut potato,False,True,0.6485610008239746
+P28_04,97,6208,6271,<background>,cut potato,cut potato,False,True,0.6718575358390808
+P28_04,98,6272,6335,cut potato,cut potato,cut potato,True,True,0.8088205456733704
+P28_04,99,6336,6399,cut potato,cut potato,cut potato,True,True,0.8679314851760864
+P28_04,100,6400,6463,cut potato,cut potato,cut potato,True,True,0.8773761987686157
+P28_04,101,6464,6527,cut potato,cut potato,cut potato,True,True,0.8898144364356995
+P28_04,102,6528,6591,cut potato,cut potato,cut potato,True,True,0.8532645106315613
+P28_04,103,6592,6655,cut potato,cut potato,cut potato,True,True,0.8197058439254761
+P28_04,104,6656,6719,cut potato,cut potato,cut potato,True,True,0.8031328916549683
+P28_04,105,6720,6783,cut potato,cut potato,cut potato,True,True,0.6304730772972107
+P28_04,106,6784,6847,cut potato,cut potato,cut potato,True,True,0.6048946976661682
+P28_04,107,6848,6911,cut potato,cut potato,cut potato,True,True,0.6598921418190002
+P28_04,108,6912,6975,cut potato,cut potato,cut potato,True,True,0.5765935182571411
+P28_04,109,6976,7039,<background>,cut potato,cut potato,False,True,0.6568722724914551
+P28_04,110,7040,7103,<background>,cut potato,cut potato,False,True,0.5537654757499695
+P28_04,111,7104,7167,<background>,cut potato,cut potato,False,True,0.61040198802948
+P28_04,112,7168,7231,<background>,cut potato,cut potato,False,True,0.7090321779251099
+P28_04,113,7232,7295,<background>,cut potato,cut potato,False,True,0.7277958989143372
+P28_04,114,7296,7359,cut potato,cut potato,cut potato,True,True,0.8540287613868713
+P28_04,115,7360,7423,cut potato,cut potato,cut potato,True,True,0.8530106544494629
+P28_04,116,7424,7487,cut potato,cut potato,cut potato,True,True,0.9354485869407654
+P28_04,117,7488,7551,cut potato,cut potato,cut potato,True,True,0.9702449440956116
+P28_04,118,7552,7615,cut potato,cut potato,cut potato,True,True,0.9168503880500793
+P28_04,119,7616,7679,cut potato,cut potato,cut potato,True,True,0.9430127739906311
+P28_04,120,7680,7743,cut potato,cut potato,cut potato,True,True,0.9408518671989441
+P28_04,121,7744,7807,cut potato,cut potato,cut potato,True,True,0.8996497988700867
+P28_04,122,7808,7871,cut potato,cut potato,cut potato,True,True,0.900268018245697
+P28_04,123,7872,7935,cut potato,cut potato,cut potato,True,True,0.9218609929084778
+P28_04,124,7936,7999,cut potato,cut potato,cut potato,True,True,0.9381201267242432
+P28_04,125,8000,8063,cut potato,cut potato,cut potato,True,True,0.962674617767334
+P28_04,126,8064,8127,cut potato,cut potato,cut potato,True,True,0.9667874574661255
+P28_04,127,8128,8191,cut potato,cut potato,cut potato,True,True,0.9770228862762451
+P28_04,128,8192,8255,cut potato,cut potato,cut potato,True,True,0.9769132137298584
+P28_04,129,8256,8319,cut potato,cut potato,cut potato,True,True,0.9689757227897644
+P28_04,130,8320,8383,cut potato,cut potato,cut potato,True,True,0.9126872420310974
+P28_04,131,8384,8447,cut potato,cut potato,cut potato,True,True,0.870294451713562
+P28_04,132,8448,8511,cut potato,cut potato,cut potato,True,True,0.8291962742805481
+P28_04,133,8512,8575,cut potato,cut potato,cut potato,True,True,0.8347852826118469
+P28_04,134,8576,8639,cut potato,cut potato,cut potato,True,True,0.8082597851753235
+P28_04,135,8640,8703,cut potato,cut potato,cut potato,True,True,0.8518533706665039
+P28_04,136,8704,8767,cut potato,cut potato,cut potato,True,True,0.8712123036384583
+P28_04,137,8768,8831,cut potato,cut potato,cut potato,True,True,0.904395580291748
+P28_04,138,8832,8895,cut potato,cut potato,cut potato,True,True,0.9594600200653076
+P28_04,139,8896,8959,cut potato,cut potato,cut potato,True,True,0.9848346710205078
+P28_04,140,8960,9023,cut potato,cut potato,cut potato,True,True,0.9903926849365234
+P28_04,141,9024,9087,cut potato,cut potato,cut potato,True,True,0.9864047765731812
+P28_04,142,9088,9151,cut potato,cut potato,cut potato,True,True,0.9888954162597656
+P28_04,143,9152,9215,cut potato,cut potato,cut potato,True,True,0.9875134825706482
+P28_04,144,9216,9279,cut potato,cut potato,cut potato,True,True,0.9846627712249756
+P28_04,145,9280,9343,cut potato,cut potato,cut potato,True,True,0.9739940166473389
+P28_04,146,9344,9407,cut potato,cut potato,cut potato,True,True,0.9691442251205444
+P28_04,147,9408,9471,cut potato,cut potato,cut potato,True,True,0.9320676326751709
+P28_04,148,9472,9535,cut potato,cut potato,cut potato,True,True,0.9270746111869812
+P28_04,149,9536,9599,cut potato,cut potato,cut potato,True,True,0.9020041823387146
+P28_04,150,9600,9663,cut potato,cut potato,cut potato,True,True,0.9014497995376587
+P28_04,151,9664,9727,cut potato,cut potato,cut potato,True,True,0.8818590044975281
+P28_04,152,9728,9791,cut potato,cut potato,cut potato,True,True,0.8660251498222351
+P28_04,153,9792,9855,cut potato,cut potato,cut potato,True,True,0.920654833316803
+P28_04,154,9856,9919,cut potato,cut potato,cut potato,True,True,0.9251787662506104
+P28_04,155,9920,9983,cut potato,cut potato,cut potato,True,True,0.9685201644897461
+P28_04,156,9984,10047,cut potato,cut potato,cut potato,True,True,0.9884073138237
+P28_04,157,10048,10111,cut potato,cut potato,cut potato,True,True,0.9882020354270935
+P28_04,158,10112,10175,cut potato,cut potato,cut potato,True,True,0.9777966141700745
+P28_04,159,10176,10239,cut potato,cut potato,cut potato,True,True,0.9855256676673889
+P28_04,160,10240,10303,cut potato,cut potato,cut potato,True,True,0.9843897223472595
+P28_04,161,10304,10367,cut potato,cut potato,cut potato,True,True,0.9759700298309326
+P28_04,162,10368,10431,cut potato,cut potato,cut potato,True,True,0.9785938262939453
+P28_04,163,10432,10495,cut potato,cut potato,cut potato,True,True,0.9698553681373596
+P28_04,164,10496,10559,cut potato,cut potato,cut potato,True,True,0.9738851189613342
+P28_04,165,10560,10623,cut potato,cut potato,cut potato,True,True,0.9839761257171631
+P28_04,166,10624,10687,cut potato,cut potato,cut potato,True,True,0.9807149171829224
+P28_04,167,10688,10751,cut potato,cut potato,cut potato,True,True,0.9787923693656921
+P28_04,168,10752,10815,cut potato,cut potato,cut potato,True,True,0.9886264204978943
+P28_04,169,10816,10879,cut potato,cut potato,cut potato,True,True,0.9742463827133179
+P28_04,170,10880,10943,cut potato,cut potato,cut potato,True,True,0.9775967597961426
+P28_04,171,10944,11007,cut potato,cut potato,cut potato,True,True,0.9869733452796936
+P28_04,172,11008,11071,cut potato,cut potato,cut potato,True,True,0.9779863953590393
+P28_04,173,11072,11135,cut potato,cut potato,cut potato,True,True,0.9730360507965088
+P28_04,174,11136,11199,cut potato,cut potato,cut potato,True,True,0.9784035682678223
+P28_04,175,11200,11263,cut potato,cut potato,cut potato,True,True,0.9563964605331421
+P28_04,176,11264,11327,cut potato,cut potato,cut potato,True,True,0.9660624265670776
+P28_04,177,11328,11391,cut potato,cut potato,cut potato,True,True,0.9518416523933411
+P28_04,178,11392,11455,cut potato,cut potato,cut potato,True,True,0.9661073684692383
+P28_04,179,11456,11519,cut potato,cut potato,cut potato,True,True,0.9791959524154663
+P28_04,180,11520,11583,cut potato,cut potato,cut potato,True,True,0.9895619750022888
+P28_04,181,11584,11647,cut potato,cut potato,cut potato,True,True,0.9887795448303223
+P28_04,182,11648,11711,cut potato,cut potato,cut potato,True,True,0.9933434724807739
+P28_04,183,11712,11775,cut potato,cut potato,cut potato,True,True,0.992224931716919
+P28_04,184,11776,11839,cut potato,cut potato,cut potato,True,True,0.9922208189964294
+P28_04,185,11840,11903,cut potato,cut potato,cut potato,True,True,0.9895814657211304
+P28_04,186,11904,11967,cut potato,cut potato,cut potato,True,True,0.985482931137085
+P28_04,187,11968,12031,cut potato,cut potato,cut potato,True,True,0.9881796836853027
+P28_04,188,12032,12095,cut potato,cut potato,cut potato,True,True,0.9818038940429688
+P28_04,189,12096,12159,cut potato,cut potato,cut potato,True,True,0.9714738726615906
+P28_04,190,12160,12223,cut potato,cut potato,cut potato,True,True,0.9772922992706299
+P28_04,191,12224,12287,cut potato,cut potato,cut potato,True,True,0.9662235379219055
+P28_04,192,12288,12351,cut potato,cut potato,cut potato,True,True,0.956813395023346
+P28_04,193,12352,12415,cut potato,cut potato,cut potato,True,True,0.9724694490432739
+P28_04,194,12416,12479,cut potato,cut potato,cut potato,True,True,0.9805980324745178
+P28_04,195,12480,12543,cut potato,cut potato,cut potato,True,True,0.9708487391471863
+P28_04,196,12544,12607,cut potato,cut potato,cut potato,True,True,0.9641246199607849
+P28_04,197,12608,12671,cut potato,cut potato,cut potato,True,True,0.9733952283859253
+P28_04,198,12672,12735,cut potato,cut potato,cut potato,True,True,0.9679425358772278
+P28_04,199,12736,12799,cut potato,cut potato,cut potato,True,True,0.9735792279243469
+P28_04,200,12800,12863,cut potato,cut potato,cut potato,True,True,0.9707615971565247
+P28_04,201,12864,12927,cut potato,cut potato,cut potato,True,True,0.9642030596733093
+P28_04,202,12928,12991,cut potato,cut potato,cut potato,True,True,0.8975968360900879
+P28_04,203,12992,13055,cut potato,cut potato,cut potato,True,True,0.7347875237464905
+P28_04,204,13056,13119,<background>,cut potato,<background>,False,False,0.1922079622745514
+P28_04,205,13120,13183,<background>,wash potato,<background>,False,False,0.17098569869995117
+P28_04,206,13184,13247,<background>,wash potato,<background>,False,False,0.10135424137115479
+P28_04,207,13248,13311,turn-on tap,wash potato,<background>,False,False,0.3479732275009155
+P28_04,208,13312,13375,wash hand,wash potato,wash potato,False,True,0.9002030491828918
+P28_04,209,13376,13439,wash potato,wash potato,wash potato,True,True,0.9681479334831238
+P28_04,210,13440,13503,wash potato,wash potato,wash potato,True,True,0.9693207144737244
+P28_04,211,13504,13567,wash potato,wash potato,wash potato,True,True,0.9813243746757507
+P28_04,212,13568,13631,wash potato,wash potato,wash potato,True,True,0.9572641253471375
+P28_04,213,13632,13695,wash potato,wash potato,wash potato,True,True,0.7800080180168152
+P28_04,214,13696,13759,turn-off tap,wash potato,<background>,False,False,0.025136498734354973
+P28_04,215,13760,13823,<background>,wash onion,<background>,False,False,0.013955408707261086
+P28_04,216,13824,13887,<background>,put-down courgette,<background>,False,False,0.0078835878521204
+P28_04,217,13888,13951,take bin,put-down courgette,<background>,False,False,0.02654757909476757
+P28_04,218,13952,14015,take bin,put-down pepper,<background>,False,False,0.008931274525821209
+P28_04,219,14016,14079,put-down bin,put-down courgette,<background>,False,False,0.005909416358917952
+P28_04,220,14080,14143,open bin,take carrot,<background>,False,False,0.030506597831845284
+P28_04,221,14144,14207,take carrot,take carrot,<background>,True,False,0.3526860773563385
+P28_04,222,14208,14271,take peeler,take carrot,<background>,False,False,0.07739043235778809
+P28_04,223,14272,14335,<background>,peel carrot,<background>,False,False,0.36657315492630005
+P28_04,224,14336,14399,peel carrot,peel carrot,peel carrot,True,True,0.87387615442276
+P28_04,225,14400,14463,peel carrot,peel carrot,peel carrot,True,True,0.9140290021896362
+P28_04,226,14464,14527,cut carrot,cut carrot,cut carrot,True,True,0.9605119228363037
+P28_04,227,14528,14591,cut carrot,cut carrot,cut carrot,True,True,0.9766900539398193
+P28_04,228,14592,14655,cut carrot,cut carrot,cut carrot,True,True,0.9794147610664368
+P28_04,229,14656,14719,cut carrot,cut carrot,cut carrot,True,True,0.9840893745422363
+P28_04,230,14720,14783,cut carrot,cut carrot,cut carrot,True,True,0.9784712195396423
+P28_04,231,14784,14847,cut carrot,cut carrot,cut carrot,True,True,0.9822497963905334
+P28_04,232,14848,14911,cut carrot,cut carrot,cut carrot,True,True,0.9701797962188721
+P28_04,233,14912,14975,cut carrot,cut carrot,cut carrot,True,True,0.9767584800720215
+P28_04,234,14976,15039,cut carrot,cut carrot,cut carrot,True,True,0.976885974407196
+P28_04,235,15040,15103,cut carrot,cut carrot,cut carrot,True,True,0.9714372158050537
+P28_04,236,15104,15167,cut carrot,cut carrot,cut carrot,True,True,0.9670504927635193
+P28_04,237,15168,15231,cut carrot,cut carrot,cut carrot,True,True,0.9488366842269897
+P28_04,238,15232,15295,cut carrot,cut carrot,cut carrot,True,True,0.9345381855964661
+P28_04,239,15296,15359,cut carrot,cut carrot,cut carrot,True,True,0.9237537980079651
+P28_04,240,15360,15423,cut carrot,cut carrot,cut carrot,True,True,0.8849653601646423
+P28_04,241,15424,15487,cut carrot,cut carrot,cut carrot,True,True,0.9174498319625854
+P28_04,242,15488,15551,cut carrot,cut carrot,cut carrot,True,True,0.9397878050804138
+P28_04,243,15552,15615,cut carrot,cut carrot,cut carrot,True,True,0.9071357250213623
+P28_04,244,15616,15679,cut carrot,cut carrot,cut carrot,True,True,0.9195957779884338
+P28_04,245,15680,15743,cut carrot,cut carrot,cut carrot,True,True,0.9333304762840271
+P28_04,246,15744,15807,cut carrot,cut carrot,cut carrot,True,True,0.9341213703155518
+P28_04,247,15808,15871,cut carrot,cut carrot,cut carrot,True,True,0.8609465956687927
+P28_04,248,15872,15935,cut carrot,cut carrot,cut carrot,True,True,0.8520305752754211
+P28_04,249,15936,15999,cut carrot,cut carrot,cut carrot,True,True,0.8197799324989319
+P28_04,250,16000,16063,cut carrot,cut carrot,cut carrot,True,True,0.7476317286491394
+P28_04,251,16064,16127,<background>,cut carrot,cut carrot,False,True,0.7492097616195679
+P28_04,252,16128,16191,<background>,cut carrot,cut carrot,False,True,0.7506796717643738
+P28_04,253,16192,16255,<background>,cut carrot,cut carrot,False,True,0.6805204749107361
+P28_04,254,16256,16319,<background>,cut carrot,cut carrot,False,True,0.5376011729240417
+P28_04,255,16320,16383,<background>,cut carrot,cut carrot,False,True,0.5430529713630676
+P28_04,256,16384,16447,<background>,cut carrot,<background>,False,False,0.3411538898944855
+P28_04,257,16448,16511,<background>,cut carrot,<background>,False,False,0.3086671233177185
+P28_04,258,16512,16575,<background>,cut carrot,<background>,False,False,0.12294483184814453
+P28_04,259,16576,16639,<background>,cut carrot,<background>,False,False,0.06378628313541412
+P28_04,260,16640,16703,<background>,cut carrot,<background>,False,False,0.045544933527708054
+P28_04,261,16704,16767,take piece:courgette,wash carrot,<background>,False,False,0.0925578624010086
+P28_04,262,16768,16831,wash carrot,wash carrot,<background>,True,False,0.44176366925239563
+P28_04,263,16832,16895,wash carrot,wash carrot,wash carrot,True,True,0.8599458932876587
+P28_04,264,16896,16959,wash carrot,wash carrot,wash carrot,True,True,0.9692783951759338
+P28_04,265,16960,17023,wash carrot,wash carrot,wash carrot,True,True,0.8828725218772888
+P28_04,266,17024,17087,<background>,wash carrot,wash carrot,False,True,0.6678851246833801
+P28_04,267,17088,17151,<background>,wash carrot,<background>,False,False,0.3951367437839508
+P28_04,268,17152,17215,<background>,move courgette,<background>,False,False,0.06897129118442535
+P28_04,269,17216,17279,<background>,move courgette,move courgette,False,True,0.556958794593811
+P28_04,270,17280,17343,move courgette,move courgette,move courgette,True,True,0.6653063297271729
+P28_04,271,17344,17407,<background>,move courgette,move courgette,False,True,0.5463734865188599
+P28_04,272,17408,17471,cut aubergine,cut aubergine,cut aubergine,True,True,0.9459133148193359
+P28_04,273,17472,17535,cut aubergine,cut aubergine,cut aubergine,True,True,0.985630989074707
+P28_04,274,17536,17599,cut aubergine,cut aubergine,cut aubergine,True,True,0.7803328633308411
+P28_04,275,17600,17663,<background>,cut aubergine,<background>,False,False,0.1659705936908722
+P28_04,276,17664,17727,throw rubbish,cut aubergine,<background>,False,False,0.1466599404811859
+P28_04,277,17728,17791,<background>,cut aubergine,<background>,False,False,0.3130601942539215
+P28_04,278,17792,17855,<background>,cut aubergine,<background>,False,False,0.0683160051703453
+P28_04,279,17856,17919,<background>,cut aubergine,<background>,False,False,0.09511211514472961
+P28_04,280,17920,17983,<background>,take courgette,<background>,False,False,0.023166324943304062
+P28_04,281,17984,18047,<background>,cut aubergine,<background>,False,False,0.029069794341921806
+P28_04,282,18048,18111,<background>,cut aubergine,<background>,False,False,0.24981895089149475
+P28_04,283,18112,18175,<background>,cut aubergine,<background>,False,False,0.12238611280918121
+P28_04,284,18176,18239,take courgette,take courgette,take courgette,True,True,0.976324200630188
+P28_04,285,18240,18303,take courgette,take courgette,take courgette,True,True,0.9913421273231506
+P28_04,286,18304,18367,take courgette,take courgette,take courgette,True,True,0.955467164516449
+P28_04,287,18368,18431,put-down carrot,put-down carrot,put-down carrot,True,True,0.5761236548423767
+P28_04,288,18432,18495,cut courgette,cut courgette,cut courgette,True,True,0.6826485991477966
+P28_04,289,18496,18559,cut courgette,cut courgette,cut courgette,True,True,0.734519362449646
+P28_04,290,18560,18623,cut courgette,cut courgette,<background>,True,False,0.44575077295303345
+P28_04,291,18624,18687,throw rubbish,cut courgette,<background>,False,False,0.0732511356472969
+P28_04,292,18688,18751,<background>,cut courgette,<background>,False,False,0.11375521123409271
+P28_04,293,18752,18815,<background>,put-down carrot,<background>,False,False,0.06216803565621376
+P28_04,294,18816,18879,<background>,take courgette,<background>,False,False,0.1977681964635849
+P28_04,295,18880,18943,<background>,take courgette,<background>,False,False,0.12657125294208527
+P28_04,296,18944,19007,<background>,take courgette,<background>,False,False,0.15298771858215332
+P28_04,297,19008,19071,throw rubbish,put-down onion:spring,<background>,False,False,0.08121400326490402
+P28_04,298,19072,19135,drop piece:courgette,put-down onion:spring,<background>,False,False,0.05835503339767456
+P28_04,299,19136,19199,put-down onion:spring,put-down onion:spring,<background>,True,False,0.315811425447464
+P28_04,300,19200,19263,<background>,put-down onion:spring,<background>,False,False,0.018460046499967575
+P28_04,301,19264,19327,<background>,put-down onion:spring,<background>,False,False,0.11150548607110977
+P28_04,302,19328,19391,take courgette,take courgette,take courgette,True,True,0.8071439266204834
+P28_04,303,19392,19455,take courgette,take courgette,take courgette,True,True,0.90794438123703
+P28_04,304,19456,19519,take courgette,take courgette,take courgette,True,True,0.9893178343772888
+P28_04,305,19520,19583,take pepper,take pepper,take pepper,True,True,0.9969623684883118
+P28_04,306,19584,19647,cut pepper,cut pepper,cut pepper,True,True,0.9989078044891357
+P28_04,307,19648,19711,cut pepper,cut pepper,cut pepper,True,True,0.998344898223877
+P28_04,308,19712,19775,cut pepper,cut pepper,cut pepper,True,True,0.9929015040397644
+P28_04,309,19776,19839,cut pepper,cut pepper,cut pepper,True,True,0.9926677346229553
+P28_04,310,19840,19903,cut pepper,cut pepper,cut pepper,True,True,0.9948457479476929
+P28_04,311,19904,19967,cut pepper,cut pepper,cut pepper,True,True,0.9966537952423096
+P28_04,312,19968,20031,cut pepper,cut pepper,cut pepper,True,True,0.9915470480918884
+P28_04,313,20032,20095,cut pepper,cut pepper,cut pepper,True,True,0.9844295978546143
+P28_04,314,20096,20159,<background>,cut pepper,<background>,False,False,0.37033191323280334
+P28_04,315,20160,20223,throw rubbish,take courgette,<background>,False,False,0.061662789434194565
+P28_04,316,20224,20287,<background>,take onion:spring,<background>,False,False,0.161237895488739
+P28_04,317,20288,20351,<background>,take onion:spring,<background>,False,False,0.2153095006942749
+P28_04,318,20352,20415,take onion:spring,take onion:spring,take onion:spring,True,True,0.5002719759941101
+P28_04,319,20416,20479,cut onion:spring,cut onion:spring,cut onion:spring,True,True,0.9768329858779907
+P28_04,320,20480,20543,cut onion:spring,cut onion:spring,cut onion:spring,True,True,0.9109447002410889
+P28_04,321,20544,20607,cut onion:spring,cut onion:spring,cut onion:spring,True,True,0.9641528725624084
+P28_04,322,20608,20671,cut onion:spring,cut onion:spring,cut onion:spring,True,True,0.9283525943756104
+P28_04,323,20672,20735,<background>,cut onion:spring,<background>,False,False,0.2024189829826355
+P28_04,324,20736,20799,<background>,cut onion:spring,<background>,False,False,0.23022331297397614
+P28_04,325,20800,20863,<background>,take onion:spring,<background>,False,False,0.13456270098686218
+P28_04,326,20864,20927,<background>,cut onion:spring,<background>,False,False,0.17582376301288605
+P28_04,327,20928,20991,<background>,cut onion:spring,<background>,False,False,0.2866283059120178
+P28_04,328,20992,21055,<background>,cut onion:spring,<background>,False,False,0.029750416055321693
+P28_04,329,21056,21119,<background>,take onion:spring,<background>,False,False,0.060722775757312775
+P28_04,330,21120,21183,<background>,put-down pepper,<background>,False,False,0.1109723299741745
+P28_04,331,21184,21247,<background>,put-down pepper,<background>,False,False,0.14969635009765625
+P28_04,332,21248,21311,cut pepper,cut pepper,<background>,True,False,0.2618373930454254
+P28_04,333,21312,21375,cut pepper,cut pepper,<background>,True,False,0.24872826039791107
+P28_04,334,21376,21439,<background>,cut pepper,<background>,False,False,0.12721282243728638
+P28_04,335,21440,21503,<background>,cut pepper,<background>,False,False,0.11308185011148453
+P28_04,336,21504,21567,<background>,cut pepper,<background>,False,False,0.06963813304901123
+P28_04,337,21568,21631,<background>,cut pepper,<background>,False,False,0.11069595068693161
+P28_04,338,21632,21695,<background>,cut pepper,<background>,False,False,0.0634530633687973
+P28_04,339,21696,21759,<background>,cut pepper,<background>,False,False,0.0596199594438076
+P28_04,340,21760,21823,<background>,cut pepper,<background>,False,False,0.05933132395148277
+P28_04,341,21824,21887,<background>,cut pepper,<background>,False,False,0.05511031672358513
+P28_04,342,21888,21951,<background>,cut pepper,<background>,False,False,0.03262966871261597
+P28_04,343,21952,22015,<background>,cut pepper,<background>,False,False,0.03157367184758186
+P28_04,344,22016,22079,throw rubbish,put-down pepper,<background>,False,False,0.06048307195305824
+P28_04,345,22080,22143,<background>,put-down pepper,<background>,False,False,0.1768900603055954
+P28_04,346,22144,22207,put-down pepper,put-down pepper,<background>,True,False,0.3533135950565338
+P28_04,347,22208,22271,put-down pepper,put-down pepper,<background>,True,False,0.26772403717041016
+P28_04,348,22272,22335,<background>,put-down pepper,<background>,False,False,0.08654879778623581
+P28_04,349,22336,22399,<background>,cut pepper,<background>,False,False,0.05754385143518448
+P28_04,350,22400,22463,<background>,cut onion,<background>,False,False,0.04337562993168831
+P28_04,351,22464,22527,<background>,cut onion,<background>,False,False,0.039867762476205826
+P28_04,352,22528,22591,<background>,cut onion,<background>,False,False,0.054484445601701736
+P28_04,353,22592,22655,<background>,cut onion,<background>,False,False,0.05090383067727089
+P28_04,354,22656,22719,<background>,cut onion,<background>,False,False,0.03889530524611473
+P28_04,355,22720,22783,<background>,cut onion,<background>,False,False,0.03595656901597977
+P28_04,356,22784,22847,<background>,cut onion,<background>,False,False,0.035530123859643936
+P28_04,357,22848,22911,<background>,cut onion,<background>,False,False,0.020065901800990105
+P28_04,358,22912,22975,<background>,cut onion,<background>,False,False,0.01966417208313942
+P28_04,359,22976,23039,<background>,cut onion,<background>,False,False,0.007857815362513065
+P28_04,360,23040,23103,<background>,take onion,<background>,False,False,0.015083378180861473
+P28_04,361,23104,23167,<background>,take onion,<background>,False,False,0.08607234060764313
+P28_04,362,23168,23231,<background>,take onion,<background>,False,False,0.0391789935529232
+P28_04,363,23232,23295,<background>,put-down onion,<background>,False,False,0.0961259976029396
+P28_04,364,23296,23359,<background>,take onion,<background>,False,False,0.165569469332695
+P28_04,365,23360,23423,<background>,take onion,<background>,False,False,0.4120190739631653
+P28_04,366,23424,23487,take onion,take onion,take onion,True,True,0.7053706645965576
+P28_04,367,23488,23551,cut onion,cut onion,cut onion,True,True,0.9267404675483704
+P28_04,368,23552,23615,cut onion,cut onion,cut onion,True,True,0.937676191329956
+P28_04,369,23616,23679,cut onion,cut onion,cut onion,True,True,0.9424344301223755
+P28_04,370,23680,23743,cut onion,cut onion,cut onion,True,True,0.9655968546867371
+P28_04,371,23744,23807,cut onion,cut onion,cut onion,True,True,0.9765051603317261
+P28_04,372,23808,23871,cut onion,cut onion,cut onion,True,True,0.982355535030365
+P28_04,373,23872,23935,cut onion,cut onion,cut onion,True,True,0.987586498260498
+P28_04,374,23936,23999,cut onion,cut onion,cut onion,True,True,0.9786956906318665
+P28_04,375,24000,24063,cut onion,cut onion,cut onion,True,True,0.9363725781440735
+P28_04,376,24064,24127,cut onion,cut onion,cut onion,True,True,0.8091909885406494
+P28_04,377,24128,24191,<background>,cut onion,<background>,False,False,0.14377588033676147
+P28_04,378,24192,24255,throw rubbish,cut onion,<background>,False,False,0.023766938596963882
+P28_04,379,24256,24319,<background>,take onion,<background>,False,False,0.013012825511395931
+P28_04,380,24320,24383,<background>,take onion,<background>,False,False,0.012926162220537663
+P28_04,381,24384,24447,<background>,peel onion,<background>,False,False,0.1128639280796051
+P28_04,382,24448,24511,<background>,peel onion,<background>,False,False,0.04830784723162651
+P28_04,383,24512,24575,peel onion,peel onion,peel onion,True,True,0.8446949124336243
+P28_04,384,24576,24639,peel onion,peel onion,peel onion,True,True,0.9291825294494629
+P28_04,385,24640,24703,peel onion,peel onion,peel onion,True,True,0.891185998916626
+P28_04,386,24704,24767,peel onion,peel onion,peel onion,True,True,0.8979361057281494
+P28_04,387,24768,24831,peel onion,peel onion,peel onion,True,True,0.7695579528808594
+P28_04,388,24832,24895,peel onion,peel onion,<background>,True,False,0.28056713938713074
+P28_04,389,24896,24959,<background>,peel onion,<background>,False,False,0.0981552004814148
+P28_04,390,24960,25023,<background>,peel onion,<background>,False,False,0.03081808239221573
+P28_04,391,25024,25087,<background>,peel onion,<background>,False,False,0.01431229431182146
+P28_04,392,25088,25151,<background>,peel onion,<background>,False,False,0.016651371493935585
+P28_04,393,25152,25215,<background>,peel onion,<background>,False,False,0.013697037473320961
+P28_04,394,25216,25279,<background>,peel onion,<background>,False,False,0.006884113885462284
+P28_04,395,25280,25343,<background>,peel onion,<background>,False,False,0.00827847234904766
+P28_04,396,25344,25407,<background>,peel onion,<background>,False,False,0.010623728856444359
+P28_04,397,25408,25471,<background>,peel onion,<background>,False,False,0.014525589533150196
+P28_04,398,25472,25535,<background>,take carrot,<background>,False,False,0.013827553950250149
+P28_04,399,25536,25599,<background>,wash onion,<background>,False,False,0.0258280448615551
+P28_04,400,25600,25663,wash onion,wash onion,wash onion,True,True,0.5891850590705872
+P28_04,401,25664,25727,wash onion,wash onion,wash onion,True,True,0.7340551614761353
+P28_04,402,25728,25791,<background>,put-down onion,<background>,False,False,0.31332799792289734
+P28_04,403,25792,25855,put-down onion,put-down onion,put-down onion,True,True,0.5970689058303833
+P28_04,404,25856,25919,<background>,put-down onion,<background>,False,False,0.16600379347801208
+P28_04,405,25920,25983,put-down scissors,put-down onion,<background>,False,False,0.049692753702402115
+P28_04,406,25984,26047,put-down scissors,take aubergine,<background>,False,False,0.05242257937788963
+P28_04,407,26048,26111,clean counter,take onion:spring,<background>,False,False,0.019872017204761505
+P28_04,408,26112,26175,clean counter,put-down onion:spring,<background>,False,False,0.0029182948637753725
+P28_04,409,26176,26239,throw rubbish,take onion:spring,<background>,False,False,0.0006843171431683004
+P28_04,410,26240,26303,throw rubbish,take onion,<background>,False,False,0.000745292054489255
+P28_04,411,26304,26367,throw rubbish,peel potato,<background>,False,False,0.0007657920359633863
+P28_04,412,26368,26431,throw rubbish,take lettuce,<background>,False,False,0.0016663450514897704
+P28_04,413,26432,26495,throw rubbish,take lettuce,<background>,False,False,0.0008423437247984111
+P28_04,414,26496,26559,move bin,put-down pepper,<background>,False,False,0.0014290083199739456
+P28_04,415,26560,26623,move bin,put-into chicken,<background>,False,False,0.0005112408543936908
+P28_04,416,26624,26687,move bin,put-down pepper,<background>,False,False,0.004803463816642761
+P28_04,417,26688,26751,<background>,put-down pepper,<background>,False,False,0.0003302257682662457
+P28_04,418,26752,26815,take towel,put-down pepper,<background>,False,False,0.002953970804810524
+P28_04,419,26816,26879,wipe hand,put-down pepper,<background>,False,False,0.0018724387045949697
+P28_04,420,26880,26943,wipe hand,put-down pepper,<background>,False,False,4.8629179218551144e-05
+P28_04,421,26944,27007,put-down towel,put-down pepper,<background>,False,False,4.7468143748119473e-05
+P28_04,422,27008,27071,<background>,take bread,<background>,False,False,6.055221092537977e-06
+P28_04,423,27072,27135,<background>,wait-for risotto,<background>,False,False,2.8824574656027835e-06
+P28_04,424,27136,27199,<background>,wait-for oil,<background>,False,False,1.6176007193280384e-05

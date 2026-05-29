@@ -1,0 +1,32 @@
+{
+  "annotated_blocks": 116895,
+  "background_blocks": 53404,
+  "embedding_dim": 1024,
+  "filter_summary": {
+    "dropped_blocks": 0,
+    "kept_blocks": 170299,
+    "mode": "all_blocks_for_relevance_training",
+    "source_blocks": 170299
+  },
+  "num_action_pairs": 7008,
+  "num_blocks": 170299,
+  "num_noun_labels": 1340,
+  "num_verb_labels": 573,
+  "num_videos": 408,
+  "relevant_blocks": 47592,
+  "run_timestamp": "20260518_2129",
+  "skipped_files": [],
+  "split_note": "Splits are block-level over full temporal blocks when TRAIN_RELEVANCE_ALL_BLOCKS is enabled; action losses are masked to valid relevant action blocks.",
+  "split_sizes": {
+    "test": 18011,
+    "train": 133279,
+    "val": 19009
+  },
+  "temporal_window": {
+    "center_only_prediction": true,
+    "padding": "zero for missing neighbors or video boundaries",
+    "radius": 3,
+    "size": 7
+  },
+  "unannotated_blocks": 53404
+}

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from pathlib import Path
 from queue import Queue
 from threading import Thread
@@ -113,9 +112,8 @@ def main():
         directory.mkdir(parents=True, exist_ok=True)
 
     jobs = [
-        # (TRAIN_IDS_FILE, TRAIN_URL, EMBEDDINGS_DIR, "train"),
-        # (TEST_IDS_FILE, TEST_URL, EMBEDDINGS_DIR, "test"),
-        (MISSING_IDS_FILE, TRAIN_URL, EMBEDDINGS_DIR, "train"),
+        (TRAIN_IDS_FILE, TRAIN_URL, EMBEDDINGS_DIR, "train"),
+        (TEST_IDS_FILE, TEST_URL, EMBEDDINGS_DIR, "test"),
     ]
 
     downloaded = Queue(maxsize=5)

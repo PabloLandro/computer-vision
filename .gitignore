@@ -1,5 +1,5 @@
 .env
 .venv/
 *.mp4
-video-classifier/old/wandb
+video-classifier/wandb
 .DS_Store
